@@ -20,8 +20,8 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/",
   },
   {
-    label: "My App",
-    href: "/myApp",
+    label: "My Passport",
+    href: "/passport",
   },
 
   {
