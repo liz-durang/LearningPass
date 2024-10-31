@@ -9,6 +9,7 @@ contract MyPassport {
         uint256 issueDate;
         string bio;
         bool isValid;
+        string userId;
     }
 
     string public constant contractTag = "MyPassport Contract!";
@@ -45,7 +46,7 @@ contract MyPassport {
 	}
 
      // Register a new passport for an individual
-    function issuePassport(address _user, string memory _fullName, string memory _bio) public {
+    function issuePassport(address _user, string memory _fullName, string memory _bio, string memory _userId) public {
         require(!passports[_user].isValid, "Passport already exists for this address");
 
 
@@ -53,7 +54,8 @@ contract MyPassport {
             fullName: _fullName,
             issueDate: block.timestamp,
             bio: _bio,
-            isValid: true
+            isValid: true,
+            userId: _userId
         });
 
         assignRole(_user, "student");
@@ -85,13 +87,13 @@ contract MyPassport {
     }
 
     // Get passport details
-    function getPassportDetails(address _user) public view returns (string memory fullName, string memory bio, uint256 issueDate, bool isValid) {
+    function getPassportDetails(address _user) public view returns (string memory fullName, string memory bio, uint256 issueDate, bool isValid, string memory userId) {
     
     Passport memory passport = passports[_user];
 
     require(passport.isValid, "Passport does not exist or is invalid");
 
-    return (passport.fullName, passport.bio, passport.issueDate, passport.isValid);
+    return (passport.fullName, passport.bio, passport.issueDate, passport.isValid, passport.userId);
 }
 
     // Assign a role to a passport
