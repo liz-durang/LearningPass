@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     CourseManager: {
-      address: "0x99bbA657f2BbC93c02D617f8bA121cB8Fc104Acf",
+      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
       abi: [
         {
           inputs: [
@@ -22,8 +22,18 @@ const deployedContracts = {
               type: "address",
             },
             {
-              internalType: "address",
+              internalType: "address payable",
               name: "_stakingContractAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_nftContractAddress",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "_rewardManagerAddress",
               type: "address",
             },
           ],
@@ -98,6 +108,31 @@ const deployedContracts = {
             {
               indexed: false,
               internalType: "uint256",
+              name: "questionId",
+              type: "uint256",
+            },
+          ],
+          name: "QuestionAnswered",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "courseId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "student",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
               name: "stakingRequirement",
               type: "uint256",
             },
@@ -133,12 +168,28 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
-              name: "_questionId",
+              name: "_questionIndex",
               type: "uint256",
             },
+            {
+              internalType: "uint256",
+              name: "_optionIndex",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_student",
+              type: "address",
+            },
           ],
-          name: "addQuestionToCourse",
-          outputs: [],
+          name: "answerCourseQuestion",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
           stateMutability: "nonpayable",
           type: "function",
         },
@@ -150,24 +201,13 @@ const deployedContracts = {
               type: "uint256",
             },
             {
-              internalType: "uint256",
-              name: "_questionIndex",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "_optionIndex",
-              type: "uint256",
+              internalType: "address",
+              name: "_student",
+              type: "address",
             },
           ],
-          name: "answerCourseQuestion",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
+          name: "claimRewardTime",
+          outputs: [],
           stateMutability: "nonpayable",
           type: "function",
         },
@@ -218,6 +258,11 @@ const deployedContracts = {
               type: "string",
             },
             {
+              internalType: "string",
+              name: "courseType",
+              type: "string",
+            },
+            {
               internalType: "address",
               name: "instructor",
               type: "address",
@@ -232,8 +277,41 @@ const deployedContracts = {
               name: "stakingRequirement",
               type: "uint256",
             },
+            {
+              internalType: "uint256",
+              name: "nftsIssued",
+              type: "uint256",
+            },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_questionText",
+              type: "string",
+            },
+            {
+              internalType: "string[]",
+              name: "_options",
+              type: "string[]",
+            },
+            {
+              internalType: "uint256",
+              name: "_correctOptionIndex",
+              type: "uint256",
+            },
+          ],
+          name: "createAndAddQuestionToCourse",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -253,10 +331,38 @@ const deployedContracts = {
               name: "_stakingRequirement",
               type: "uint256",
             },
+            {
+              internalType: "string",
+              name: "_courseType",
+              type: "string",
+            },
           ],
           name: "createCourse",
           outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_timeLimit",
+              type: "uint256",
+            },
+          ],
+          name: "createRewardTime",
+          outputs: [],
+          stateMutability: "payable",
           type: "function",
         },
         {
@@ -268,7 +374,7 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
-              name: "courseId",
+              name: "_courseId",
               type: "uint256",
             },
           ],
@@ -281,7 +387,25 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "uint256",
-              name: "courseId",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_student",
+              type: "address",
+            },
+          ],
+          name: "finishCourse",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
               type: "uint256",
             },
           ],
@@ -301,6 +425,11 @@ const deployedContracts = {
               internalType: "address",
               name: "",
               type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
             },
             {
               internalType: "uint256",
@@ -334,12 +463,79 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "uint256",
-              name: "courseId",
+              name: "_courseId",
+              type: "uint256",
+            },
+          ],
+          name: "getNftsIssued",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
               type: "uint256",
             },
             {
               internalType: "address",
-              name: "student",
+              name: "_student",
+              type: "address",
+            },
+          ],
+          name: "getStudentProgress",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "progressPercentage",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_student",
+              type: "address",
+            },
+          ],
+          name: "getStudentStartTime",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_student",
               type: "address",
             },
           ],
@@ -349,6 +545,19 @@ const deployedContracts = {
               internalType: "bool",
               name: "",
               type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "myLearningNFT",
+          outputs: [
+            {
+              internalType: "contract MyLearningNFT",
+              name: "",
+              type: "address",
             },
           ],
           stateMutability: "view",
@@ -382,6 +591,19 @@ const deployedContracts = {
         },
         {
           inputs: [],
+          name: "rewardManager",
+          outputs: [
+            {
+              internalType: "contract RewardManager",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "stakingManager",
           outputs: [
             {
@@ -402,7 +624,7 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
-              name: "courseId",
+              name: "_courseId",
               type: "uint256",
             },
           ],
@@ -414,12 +636,220 @@ const deployedContracts = {
         {
           inputs: [
             {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+            {
               internalType: "uint256",
-              name: "courseId",
+              name: "_courseId",
               type: "uint256",
             },
           ],
-          name: "withdrawFinishedCourse",
+          name: "withdrawRewardTime",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    MyLearningNFT: {
+      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_symbol",
+              type: "string",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "approved",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Approval",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "Transfer",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "approve",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+          ],
+          name: "balanceOf",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "contractTag",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+          ],
+          name: "mint",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "name",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "ownerOf",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "symbol",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "from",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "to",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "transferFrom",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
@@ -428,7 +858,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     MyPassport: {
-      address: "0x998abeb3E57409262aE5b751f60747921B33613E",
+      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
       abi: [
         {
           inputs: [
@@ -806,7 +1236,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     QuestionManager: {
-      address: "0xf5059a5D33d5853360D16C683c16e67980206f36",
+      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
       abi: [
         {
           inputs: [
@@ -994,8 +1424,348 @@ const deployedContracts = {
       ],
       inheritedFunctions: {},
     },
+    RewardManager: {
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_owner",
+              type: "address",
+            },
+            {
+              internalType: "address payable",
+              name: "_stakingManagerAddress",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "courseId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "student",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "RewardClaimed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "courseId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "RewardCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "courseId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rewardIndex",
+              type: "uint256",
+            },
+          ],
+          name: "RewardRemoved",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rewardIndex",
+              type: "uint256",
+            },
+          ],
+          name: "RewardWithdrawn",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_student",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_completionTime",
+              type: "uint256",
+            },
+          ],
+          name: "claimRewardTime",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "contractTag",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_timeLimit",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "createRewardTime",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "rewardIndex",
+              type: "uint256",
+            },
+          ],
+          name: "getRewardAmount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_rewardType",
+              type: "string",
+            },
+          ],
+          name: "getRewardIndexByType",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "owner",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_rewardIndex",
+              type: "uint256",
+            },
+          ],
+          name: "removeRewardTime",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "rewardCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "rewards",
+          outputs: [
+            {
+              internalType: "string",
+              name: "rewardType",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "totalAmount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "timeLimit",
+              type: "uint256",
+            },
+            {
+              internalType: "bool",
+              name: "exists",
+              type: "bool",
+            },
+            {
+              internalType: "address",
+              name: "instructor",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "stakingManager",
+          outputs: [
+            {
+              internalType: "contract StakingManager",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+          ],
+          name: "withdrawRewardTime",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
     StakingManager: {
-      address: "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49",
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       abi: [
         {
           inputs: [
@@ -1014,14 +1784,8 @@ const deployedContracts = {
             {
               indexed: true,
               internalType: "address",
-              name: "user",
+              name: "owner",
               type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "courseId",
-              type: "uint256",
             },
             {
               indexed: false,
@@ -1030,7 +1794,7 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          name: "StakeDeposited",
+          name: "ContractFunded",
           type: "event",
         },
         {
@@ -1055,8 +1819,138 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          name: "StakeWithdrawn",
+          name: "CourseStakeDeposited",
           type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "courseId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "CourseStakeWithdrawn",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "RewardStakeClaimed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rewardId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "RewardStakeDeposited",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "rewardId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "RewardStakeWithdrawn",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "amountRewards",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "rewardIndex",
+              type: "uint256",
+            },
+          ],
+          name: "claimReward",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
         },
         {
           inputs: [],
@@ -1084,9 +1978,42 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          name: "depositStake",
+          name: "depositCourseStake",
           outputs: [],
           stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_rewardId",
+              type: "uint256",
+            },
+          ],
+          name: "depositRewardStake",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "fundContract",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getContractBalance",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -1102,11 +2029,30 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          name: "getStake",
+          name: "getStakeCourse",
           outputs: [
             {
               internalType: "uint256",
               name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getTotalStakeCourses",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "totalStake",
               type: "uint256",
             },
           ],
@@ -1139,7 +2085,31 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          name: "stakes",
+          name: "stakesCourses",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "stakesRewards",
           outputs: [
             {
               internalType: "uint256",
@@ -1163,10 +2133,32 @@ const deployedContracts = {
               type: "uint256",
             },
           ],
-          name: "withdrawStake",
+          name: "withdrawStakeCourse",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "_rewardId",
+              type: "uint256",
+            },
+          ],
+          name: "withdrawStakeReward",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          stateMutability: "payable",
+          type: "receive",
         },
       ],
       inheritedFunctions: {},
