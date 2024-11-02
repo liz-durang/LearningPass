@@ -5,12 +5,14 @@ import "./StakingManager.sol";
 
 contract RewardManager {
     struct Reward {
+        string description;
         string rewardType;
         uint256 totalAmount; //Amount for all the students
         uint256 amount; // Amount of reward by student
         uint256 timeLimit; // Time limit to earn the reward
+        uint256 attemp; //limit of attemp to earn a reward
         bool exists; // Check if the reward exists
-        address instructor;
+        string provider;
     }
 
     string public constant contractTag = "Reward Manager Contract!";
@@ -32,7 +34,7 @@ contract RewardManager {
         stakingManager = StakingManager(_stakingManagerAddress);
     }
 
-    function createRewardTime(uint256 _courseId, uint256 _amount, uint256 _timeLimit, address _user) public payable{
+    function createRewardTime(uint256 _courseId, uint256 _amount, uint256 _timeLimit, string memory _provider, string memory _description) public payable{
         require(_amount > 0, "Reward amount must be greater than zero");
         require(msg.value > _amount, "Total reward amount must be greater than amount");
 
@@ -54,8 +56,10 @@ contract RewardManager {
             totalAmount: msg.value,
             amount: _amount,
             timeLimit: _timeLimit,
+            attemp: 0,
             exists: true, 
-            instructor: _user
+            provider: _provider,
+            description: _description
         }));
 
         stakingManager.depositRewardStake{value: msg.value}(rewardCount);
@@ -63,6 +67,41 @@ contract RewardManager {
 
         emit RewardCreated(_courseId, _amount);
     }
+
+    function createRewardAttemp(uint256 _courseId, uint256 _amount, uint256 _attemp, string memory _provider, string memory _description) public payable{
+        require(_amount > 0, "Reward amount must be greater than zero");
+        require(msg.value > _amount, "Total reward amount must be greater than amount");
+
+        // Verificar si ya existe un Reward de tipo "Time" para este curso
+        uint256 existingRewardIndex;
+        bool exists = false;
+
+        try this.getRewardIndexByType(_courseId, "Attemp") returns (uint256 index) {
+            existingRewardIndex = index;
+            exists = true; // Si se encuentra, se establece exists a true
+        } catch {
+            exists = false; // Si no se encuentra, permanece false
+        }
+
+        require(!exists, "Reward of type 'Attemp' already exists for this course");
+
+        rewards[_courseId].push(Reward({
+            rewardType: "Attemp",
+            totalAmount: msg.value,
+            amount: _amount,
+            timeLimit: 0,
+            attemp: _attemp,
+            exists: true, 
+            provider: _provider,
+            description: _description
+        }));
+
+        stakingManager.depositRewardStake{value: msg.value}(rewardCount);
+        rewardCount++;
+
+        emit RewardCreated(_courseId, _amount);
+    }
+
 
     function claimRewardTime(uint256 _courseId, address _student, uint256 _completionTime) public {
         uint256 rewardIndex = getRewardIndexByType(_courseId, "Time");
@@ -135,6 +174,10 @@ contract RewardManager {
         return false; 
 
     }
+
+    function getAllRewardsByCourse(uint256 _courseId) public view returns (Reward[] memory) {
+    return rewards[_courseId];
+}
 
 
 

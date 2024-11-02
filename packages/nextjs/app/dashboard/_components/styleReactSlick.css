@@ -1,0 +1,24 @@
+/* Cambia el color de las flechas */
+.slick-prev:before,
+.slick-next:before {
+  color: #93BBFB; /* Reemplaza este color con el que prefieras */
+  font-size: 20px; /* Puedes ajustar el tamaño si deseas */
+}
+
+/* Opcional: personaliza el fondo y bordes de las flechas */
+.slick-prev,
+.slick-next {
+
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Opcional: estilo al pasar el mouse */
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #385183; /* Cambia el color al hacer hover */
+}

@@ -20,6 +20,9 @@ contract StakingManager {
     // Mapping to store all reward a user has claim in 
     mapping(address => uint256[]) private userRewards;
 
+    // Mapping para saber si un usuario ha retirado su participación en un curso
+    mapping(address => mapping(uint256 => bool)) public hasWithdrawn;
+
     event CourseStakeDeposited(address indexed user, uint256 courseId, uint256 amount);
     event CourseStakeWithdrawn(address indexed user, uint256 courseId, uint256 amount);
     event RewardStakeDeposited(uint256 rewardId, uint256 amount);
@@ -84,10 +87,16 @@ contract StakingManager {
     function withdrawStakeCourse(address _user, uint256 _courseId) public {
         uint256 stakedAmount = stakesCourses[_user][_courseId];
         require(stakedAmount > 0, "No stake to withdraw for this course");
+        require(!hasWithdrawn[_user][_courseId], "Stake already withdrawn for this course"); // Verifica si ya se ha retirado
 
         stakesCourses[_user][_courseId] = 0;
+        hasWithdrawn[_user][_courseId] = true; // Marca que se ha retirado
         payable(_user).transfer(stakedAmount);
         emit CourseStakeWithdrawn(_user, _courseId, stakedAmount);
+    }
+
+    function checkWithdrawStatus(address _user, uint256 _courseId) public view returns (bool) {
+        return hasWithdrawn[_user][_courseId]; // Retorna true si ya ha retirado, false si no
     }
     
 
@@ -108,10 +117,18 @@ contract StakingManager {
     }
 
     // Function to get the total stake of a user across all courses
-    function getTotalStakeCourses(address _user) public view returns (uint256 totalStake) {
+    // Function to get the total stake of a user across all courses and count the number of courses
+    function getTotalStakeCourses(address _user) public view returns (uint256 totalStake, uint256 courseCount) {
         uint256[] memory courses = userCourses[_user];
+        courseCount = 0; // Inicializa el contador de cursos
+        totalStake = 0; // Inicializa el total de stakes
+
         for (uint256 i = 0; i < courses.length; i++) {
-            totalStake += stakesCourses[_user][courses[i]];
+            uint256 stakeAmount = stakesCourses[_user][courses[i]];
+            if (stakeAmount > 0) { // Solo cuenta los cursos con un stake mayor a 0
+                totalStake += stakeAmount;
+                courseCount++; // Incrementa el contador de cursos
+            }
         }
     }
 
