@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     CourseManager: {
-      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      address: "0x09635F643e140090A9A8Dcd712eD6285858ceBef",
       abi: [
         {
           inputs: [
@@ -36,6 +36,11 @@ const deployedContracts = {
               name: "_rewardManagerAddress",
               type: "address",
             },
+            {
+              internalType: "address",
+              name: "_myPassportAddress",
+              type: "address",
+            },
           ],
           stateMutability: "nonpayable",
           type: "constructor",
@@ -58,7 +63,7 @@ const deployedContracts = {
             {
               indexed: false,
               internalType: "address",
-              name: "instructor",
+              name: "provider",
               type: "address",
             },
             {
@@ -263,13 +268,18 @@ const deployedContracts = {
               type: "string",
             },
             {
-              internalType: "address",
-              name: "instructor",
-              type: "address",
+              internalType: "string",
+              name: "provider",
+              type: "string",
             },
             {
               internalType: "uint256",
               name: "enrolledStudents",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "completedStudents",
               type: "uint256",
             },
             {
@@ -336,6 +346,11 @@ const deployedContracts = {
               name: "_courseType",
               type: "string",
             },
+            {
+              internalType: "string",
+              name: "_provider",
+              type: "string",
+            },
           ],
           name: "createCourse",
           outputs: [],
@@ -356,8 +371,41 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
+              name: "_attemps",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_description",
+              type: "string",
+            },
+          ],
+          name: "createRewardAttemp",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
               name: "_timeLimit",
               type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_description",
+              type: "string",
             },
           ],
           name: "createRewardTime",
@@ -402,6 +450,75 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "getAllCourses",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "courseId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "provider",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "courseType",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "enrolledStudents",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "stakingRequirement",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct CourseManager.CourseSummary[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+          ],
+          name: "getCompletedStudentsCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "uint256",
@@ -422,9 +539,9 @@ const deployedContracts = {
               type: "string",
             },
             {
-              internalType: "address",
+              internalType: "string",
               name: "",
-              type: "address",
+              type: "string",
             },
             {
               internalType: "uint256",
@@ -435,6 +552,11 @@ const deployedContracts = {
               internalType: "uint256",
               name: "",
               type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
             },
           ],
           stateMutability: "view",
@@ -449,6 +571,25 @@ const deployedContracts = {
             },
           ],
           name: "getCourseQuestions",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_student",
+              type: "address",
+            },
+          ],
+          name: "getEnrolledCourses",
           outputs: [
             {
               internalType: "uint256[]",
@@ -539,6 +680,30 @@ const deployedContracts = {
               type: "address",
             },
           ],
+          name: "hasStudentCompletedCourse",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_student",
+              type: "address",
+            },
+          ],
           name: "isEnrolled",
           outputs: [
             {
@@ -556,6 +721,19 @@ const deployedContracts = {
           outputs: [
             {
               internalType: "contract MyLearningNFT",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "myPassport",
+          outputs: [
+            {
+              internalType: "contract MyPassport",
               name: "",
               type: "address",
             },
@@ -1047,6 +1225,30 @@ const deployedContracts = {
               name: "isValid",
               type: "bool",
             },
+            {
+              internalType: "string",
+              name: "userId",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getRoles",
+          outputs: [
+            {
+              internalType: "string[]",
+              name: "",
+              type: "string[]",
+            },
           ],
           stateMutability: "view",
           type: "function",
@@ -1111,6 +1313,11 @@ const deployedContracts = {
               name: "_bio",
               type: "string",
             },
+            {
+              internalType: "string",
+              name: "_userId",
+              type: "string",
+            },
           ],
           name: "issuePassport",
           outputs: [],
@@ -1159,6 +1366,11 @@ const deployedContracts = {
               internalType: "bool",
               name: "isValid",
               type: "bool",
+            },
+            {
+              internalType: "string",
+              name: "userId",
+              type: "string",
             },
           ],
           stateMutability: "view",
@@ -1236,7 +1448,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     QuestionManager: {
-      address: "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      address: "0x59b670e9fA9D0A427751Af201D676719a970857b",
       abi: [
         {
           inputs: [
@@ -1288,6 +1500,31 @@ const deployedContracts = {
           type: "event",
         },
         {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "questionId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "selectedOptionIndex",
+              type: "uint256",
+            },
+          ],
+          name: "UserAnswered",
+          type: "event",
+        },
+        {
           inputs: [
             {
               internalType: "string",
@@ -1321,6 +1558,11 @@ const deployedContracts = {
               internalType: "uint256",
               name: "_optionIndex",
               type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
             },
           ],
           name: "answerQuestion",
@@ -1366,6 +1608,69 @@ const deployedContracts = {
               internalType: "string[]",
               name: "options",
               type: "string[]",
+            },
+            {
+              internalType: "uint256",
+              name: "correctOptionIndex",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256[]",
+              name: "_questionIds",
+              type: "uint256[]",
+            },
+          ],
+          name: "getQuestionsDetails",
+          outputs: [
+            {
+              internalType: "string[]",
+              name: "questionTexts",
+              type: "string[]",
+            },
+            {
+              internalType: "string[][]",
+              name: "allOptions",
+              type: "string[][]",
+            },
+            {
+              internalType: "uint256[]",
+              name: "correctOptionIndices",
+              type: "uint256[]",
+            },
+            {
+              internalType: "uint256[]",
+              name: "ids",
+              type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256[]",
+              name: "_questionIds",
+              type: "uint256[]",
+            },
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getUserAnswers",
+          outputs: [
+            {
+              internalType: "uint256[]",
+              name: "",
+              type: "uint256[]",
             },
           ],
           stateMutability: "view",
@@ -1421,11 +1726,58 @@ const deployedContracts = {
           stateMutability: "view",
           type: "function",
         },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_questionId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_selectedOption",
+              type: "uint256",
+            },
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "saveUserAnswer",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "userAnswers",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
       ],
       inheritedFunctions: {},
     },
     RewardManager: {
-      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+      address: "0x7a2088a1bFc9d81c55368AE168C2C02570cB814F",
       abi: [
         {
           inputs: [
@@ -1575,18 +1927,117 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
+              name: "_attemp",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_provider",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_description",
+              type: "string",
+            },
+          ],
+          name: "createRewardAttemp",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "_amount",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
               name: "_timeLimit",
               type: "uint256",
             },
             {
-              internalType: "address",
-              name: "_user",
-              type: "address",
+              internalType: "string",
+              name: "_provider",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_description",
+              type: "string",
             },
           ],
           name: "createRewardTime",
           outputs: [],
           stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+          ],
+          name: "getAllRewardsByCourse",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "rewardType",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "totalAmount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "amount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timeLimit",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "attemp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bool",
+                  name: "exists",
+                  type: "bool",
+                },
+                {
+                  internalType: "string",
+                  name: "provider",
+                  type: "string",
+                },
+              ],
+              internalType: "struct RewardManager.Reward[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -1698,6 +2149,11 @@ const deployedContracts = {
           outputs: [
             {
               internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              internalType: "string",
               name: "rewardType",
               type: "string",
             },
@@ -1717,14 +2173,19 @@ const deployedContracts = {
               type: "uint256",
             },
             {
+              internalType: "uint256",
+              name: "attemp",
+              type: "uint256",
+            },
+            {
               internalType: "bool",
               name: "exists",
               type: "bool",
             },
             {
-              internalType: "address",
-              name: "instructor",
-              type: "address",
+              internalType: "string",
+              name: "provider",
+              type: "string",
             },
           ],
           stateMutability: "view",
@@ -1765,7 +2226,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     StakingManager: {
-      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      address: "0x4A679253410272dd5232B3Ff7cF5dbB88f295319",
       abi: [
         {
           inputs: [
@@ -1938,6 +2399,30 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
+              name: "_courseId",
+              type: "uint256",
+            },
+          ],
+          name: "checkWithdrawStatus",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
               name: "amount",
               type: "uint256",
             },
@@ -2054,6 +2539,35 @@ const deployedContracts = {
               internalType: "uint256",
               name: "totalStake",
               type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "courseCount",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "hasWithdrawn",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
             },
           ],
           stateMutability: "view",

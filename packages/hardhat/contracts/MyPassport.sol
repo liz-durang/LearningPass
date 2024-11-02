@@ -15,6 +15,7 @@ contract MyPassport {
     string public constant contractTag = "MyPassport Contract!";
     mapping(address => Passport) public passports;
     mapping(address => mapping(string => bool)) public roles; // Mapping (usuario => (rol => existe))
+    mapping(address => string[]) private userRoles;
     address public immutable owner;
     address public admin;
 
@@ -58,7 +59,7 @@ contract MyPassport {
             userId: _userId
         });
 
-        assignRole(_user, "student");
+        this.assignRole(_user, "student");
 
         emit PassportIssued(_user, _fullName, block.timestamp);
     }
@@ -102,6 +103,7 @@ contract MyPassport {
         require(!roles[_user][_role], "Role already assigned"); // Verificar que no se duplique el rol
 
         roles[_user][_role] = true; // Asignar el rol
+        userRoles[_user].push(_role); // Add the role to the user's role list
         emit RoleAssigned(_user, _role);
     }
 
@@ -126,5 +128,10 @@ contract MyPassport {
         admin = _newAdmin;
         emit AdminAdded(_newAdmin);
     }
-   
+
+    // Get all roles of a user
+    function getRoles(address _user) public view returns (string[] memory) {
+        require(passports[_user].isValid, "Passport does not exist");
+        return userRoles[_user]; // Return the list of roles
+    }
 }

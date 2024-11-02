@@ -30,6 +30,8 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   const MyLearningNFTDeploymentAddress = MyLearningNFTDeployment.address;
   const RewardManagerDeployment = await get("RewardManager");
   const RewardManagerDeploymentAddress = RewardManagerDeployment.address;
+  const MyPassportDeployment = await get("MyPassport");
+  const MyPassportDeploymentAddress = MyPassportDeployment.address;
 
   await deploy("CourseManager", {
     from: deployer,
@@ -40,6 +42,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
       stakingManagerAddress,
       MyLearningNFTDeploymentAddress,
       RewardManagerDeploymentAddress,
+      MyPassportDeploymentAddress,
     ],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
