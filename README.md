@@ -7,7 +7,7 @@
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/LearningPass.jpg">
   </a>
 
-<br>
+<br />
 <p align="center">
   <a href="https://dorahacks.io/hackathon/441/detail">Hackathon Women Web3 by Cripto Conexión</a>
 </p>
@@ -22,6 +22,35 @@
 Learning Pass is a blockchain learning platform that boosts student engagement and rewards their efforts, democratizing education and decentralizing knowledge 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Problem
+
+Education in disruptive technologies, such as blockchain and Web3, faces significant challenges:
+
+- **High dropout rates in free courses:**  
+  Introductory courses are often free to onboard new users, but this frequently leads to a perception of low value, contributing to high dropout rates and lower student engagement, reducing the educational impact.
+
+- **Lack of skill validation:**  
+  Committed students lack reliable ways to demonstrate their knowledge, as traditional education systems have not yet adapted to this technological revolution. This limits the value of courses and the employment opportunities for students.
+
+- **Limitations in educational platforms:**  
+  Most blockchain and Web3 programs are developed by individuals, communities, or protocols that lack dedicated platforms for distributing their content. Without a standardized evaluation framework, the educational and professional value of these programs is limited.
+
+
+# Solution
+
+**LearningPass** is a blockchain learning platform that boosts student engagement and rewards their efforts:
+
+- **Refundable enrollment model:**  
+  Students pay an initial fee that is staked and refunded upon completing the course on time, creating a “pay only if you drop out” experience. Additionally, they can earn extra rewards for achieving milestones, turning learning into a gainful opportunity.
+
+
+- **On-chain Passport:**  
+  Each completed course and evaluation is recorded through NFTs in an “On-chain Passport,” facilitating the validation of skills and competencies for potential employers.
+
+- **Platform as a service for educators:**  
+  LearningPass provides an infrastructure for educators to publish and evaluate content on disruptive technologies, fostering diversity and quality in education.
+
 
 <!-- Quickstart-->
 
@@ -61,6 +90,14 @@ yarn start
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
 
 Run smart contract test with `yarn hardhat:test`
+
+# Built With
+
+Supported by:
+* [![Vottun][https://vottun.com/]]
+* [![Arbitrum][https://arbitrum.io/]]
+* [![Scaffold-ETH 2][https://scaffoldeth.io/]]
+
 
 <!-- CONTACT -->
 
