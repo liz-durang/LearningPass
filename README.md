@@ -6,7 +6,7 @@
 🗒️ A blockchain learning platform that boosts student engagement and rewards their efforts, democratizing education and decentralizing knowledge 
 
 <div align="center">
-  <a href="[https://github.com/EthPocketHQ/Pocket](https://github.com/liz-durang/LearningPass)">
+  <a href="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/LearningPass.jpg">
     <img src="/LearningPass.jpg">
   </a>
 
