@@ -1,0 +1,589 @@
+{
+  "address": "0x3A4ADbEe30B95099280246208C6875cdaafd4059",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fullName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "issueDate",
+          "type": "uint256"
+        }
+      ],
+      "name": "PassportIssued",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "PassportRevoked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        }
+      ],
+      "name": "RoleAssigned",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "role",
+          "type": "string"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_role",
+          "type": "string"
+        }
+      ],
+      "name": "assignRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contractTag",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "getPassportDetails",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "fullName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "bio",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "issueDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isValid",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "userId",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "getRoles",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_role",
+          "type": "string"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "isPassportValid",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_fullName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_bio",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_userId",
+          "type": "string"
+        }
+      ],
+      "name": "issuePassport",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "passports",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "fullName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "issueDate",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "bio",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "isValid",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "userId",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "revokePassport",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_role",
+          "type": "string"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "roles",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "setAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xab3cc9de5a3217d2d33adcaa034507a7c2385d8b653936c582ca1728235805dc",
+  "receipt": {
+    "to": null,
+    "from": "0xAAeCA2a5703a6ea642Dd7bCF73E1E9c39d26f12C",
+    "contractAddress": "0x3A4ADbEe30B95099280246208C6875cdaafd4059",
+    "transactionIndex": 1,
+    "gasUsed": "1254762",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x71c8f2e114c6decb91268e8ce8c0039c1d28d13d90ac77c91ee07afbd28565e6",
+    "transactionHash": "0xab3cc9de5a3217d2d33adcaa034507a7c2385d8b653936c582ca1728235805dc",
+    "logs": [],
+    "blockNumber": 94174686,
+    "cumulativeGasUsed": "1254762",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xAAeCA2a5703a6ea642Dd7bCF73E1E9c39d26f12C"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "31c2257a81a8bd29f2c3f75d8c4d59c2",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"name\":\"AdminRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"fullName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"issueDate\",\"type\":\"uint256\"}],\"name\":\"PassportIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"PassportRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"role\",\"type\":\"string\"}],\"name\":\"RoleAssigned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"role\",\"type\":\"string\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_role\",\"type\":\"string\"}],\"name\":\"assignRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"contractTag\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"getPassportDetails\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"fullName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"bio\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"issueDate\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"getRoles\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_role\",\"type\":\"string\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"isPassportValid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_fullName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_bio\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_userId\",\"type\":\"string\"}],\"name\":\"issuePassport\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"passports\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"fullName\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"issueDate\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"bio\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"isValid\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"revokePassport\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_role\",\"type\":\"string\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"roles\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newAdmin\",\"type\":\"address\"}],\"name\":\"setAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MyPassport.sol\":\"MyPassport\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/MyPassport.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ncontract MyPassport {\\n    \\n    // State Variables\\n    struct Passport {\\n        string fullName;\\n        uint256 issueDate;\\n        string bio;\\n        bool isValid;\\n        string userId;\\n    }\\n\\n    string public constant contractTag = \\\"MyPassport Contract!\\\";\\n    mapping(address => Passport) public passports;\\n    mapping(address => mapping(string => bool)) public roles; // Mapping (usuario => (rol => existe))\\n    mapping(address => string[]) private userRoles;\\n    address public immutable owner;\\n    address public admin;\\n\\n    // Events: a way to emit log statements from smart contract that can be listened to by external parties\\n    event PassportIssued(address indexed owner, string fullName, uint256 issueDate);\\n    event PassportRevoked(address indexed owner);\\n    event RoleAssigned(address indexed user, string role);\\n    event RoleRevoked(address indexed user, string role);\\n    event AdminAdded(address indexed newAdmin);\\n    event AdminRemoved(address indexed admin);\\n\\n    // Modifier: used to define a set of rules that must be met before or after a function is executed\\n    modifier isOwner() {\\n\\t\\t// msg.sender: predefined variable that represents address of the account that called the current function\\n\\t\\trequire(msg.sender == owner, \\\"Not the Owner\\\");\\n\\t\\t_;\\n\\t}\\n\\n    // Modifier: to restrict access to admin functions\\n    modifier onlyAdmin() {\\n        require(msg.sender == admin, \\\"Not the admin\\\");\\n        _;\\n    }\\n\\n    // Constructor: Called once on contract deployment\\n    constructor(address _owner) {\\n\\t\\towner = _owner;\\n        admin = _owner;\\n\\t}\\n\\n     // Register a new passport for an individual\\n    function issuePassport(address _user, string memory _fullName, string memory _bio, string memory _userId) public {\\n        require(!passports[_user].isValid, \\\"Passport already exists for this address\\\");\\n\\n\\n        passports[_user] = Passport({\\n            fullName: _fullName,\\n            issueDate: block.timestamp,\\n            bio: _bio,\\n            isValid: true,\\n            userId: _userId\\n        });\\n\\n        this.assignRole(_user, \\\"student\\\");\\n\\n        emit PassportIssued(_user, _fullName, block.timestamp);\\n    }\\n    \\n     // Revoke an existing passport\\n    function revokePassport(address _user) public onlyAdmin{\\n        require(passports[_user].isValid, \\\"Passport does not exist or is already revoked\\\");\\n\\n        passports[_user].isValid = false;\\n\\n        emit PassportRevoked(_user);\\n    }\\n\\n\\n\\n    // Check if a passport is valid\\n    function isPassportValid(address _user) public view returns (bool) {\\n        bool valid;\\n        if(passports[_user].isValid){\\n            valid = true;\\n        }else{\\n            valid = false;\\n        }\\n\\n        return valid;\\n    }\\n\\n    // Get passport details\\n    function getPassportDetails(address _user) public view returns (string memory fullName, string memory bio, uint256 issueDate, bool isValid, string memory userId) {\\n    \\n    Passport memory passport = passports[_user];\\n\\n    require(passport.isValid, \\\"Passport does not exist or is invalid\\\");\\n\\n    return (passport.fullName, passport.bio, passport.issueDate, passport.isValid, passport.userId);\\n}\\n\\n    // Assign a role to a passport\\n    function assignRole(address _user, string memory _role) public {\\n        require(passports[_user].isValid, \\\"Passport does not exist\\\");\\n        require(!roles[_user][_role], \\\"Role already assigned\\\"); // Verificar que no se duplique el rol\\n\\n        roles[_user][_role] = true; // Asignar el rol\\n        userRoles[_user].push(_role); // Add the role to the user's role list\\n        emit RoleAssigned(_user, _role);\\n    }\\n\\n    // Revoke a role from a passport\\n    function revokeRole(address _user, string memory _role) public onlyAdmin{\\n        require(passports[_user].isValid, \\\"Passport does not exist\\\");\\n        require(roles[_user][_role], \\\"Role does not exist for this user\\\"); // Verificar que el rol exista\\n\\n        roles[_user][_role] = false; // Revocar el rol\\n        emit RoleRevoked(_user, _role);\\n\\n    }\\n\\n    // Check if a user has a specific role\\n    function hasRole(address _user, string memory _role) public view returns (bool) {\\n        require(passports[_user].isValid, \\\"Passport does not exist\\\");\\n        return roles[_user][_role]; // Retornar el estado del rol\\n    }\\n\\n    // Add a new admin (only owner)\\n    function setAdmin(address _newAdmin) public onlyAdmin {\\n        admin = _newAdmin;\\n        emit AdminAdded(_newAdmin);\\n    }\\n\\n    // Get all roles of a user\\n    function getRoles(address _user) public view returns (string[] memory) {\\n        require(passports[_user].isValid, \\\"Passport does not exist\\\");\\n        return userRoles[_user]; // Return the list of roles\\n    }\\n}\\n\",\"keccak256\":\"0x877783ceba2a2c03becc9d067871d5f05f9d2c63e3cff7d35602ee086da03967\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b5060405161153038038061153083398101604081905261002f91610055565b6001600160a01b03166080819052600380546001600160a01b0319169091179055610085565b60006020828403121561006757600080fd5b81516001600160a01b038116811461007e57600080fd5b9392505050565b6080516114906100a060003960006101e001526114906000f3fe608060405234801561001057600080fd5b50600436106100ea5760003560e01c806384f526401161008c578063b7dfcbee11610066578063b7dfcbee1461025a578063ce6ccfaf1461026d578063e37c132b1461028d578063f851a440146102b157600080fd5b806384f52640146101c85780638da5cb5b146101db578063925639391461021a57600080fd5b80634a4a15d4116100c85780634a4a15d41461013f5780635e197a0f1461017e5780636fe512bc14610191578063704b6c02146101b557600080fd5b806308789521146100ef578063217fe6c6146101045780632eb415bd1461012c575b600080fd5b6101026100fd36600461100d565b6102c4565b005b61011761011236600461100d565b61044d565b60405190151581526020015b60405180910390f35b61010261013a36600461105b565b6104ca565b61011761014d36600461100d565b6001602090815260009283526040909220815180830184018051928152908401929093019190912091525460ff1681565b61011761018c36600461105b565b6105c1565b6101a461019f36600461105b565b6105f9565b6040516101239594939291906110cd565b6101026101c336600461105b565b61088e565b6101026101d6366004611120565b610902565b6102027f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b039091168152602001610123565b61024d604051806040016040528060148152602001734d7950617373706f727420436f6e74726163742160601b81525081565b60405161012391906111b9565b61010261026836600461100d565b610ae0565b61028061027b36600461105b565b610c57565b60405161012391906111cc565b6102a061029b36600461105b565b610d7f565b60405161012395949392919061122e565b600354610202906001600160a01b031681565b6003546001600160a01b031633146102f75760405162461bcd60e51b81526004016102ee90611275565b60405180910390fd5b6001600160a01b03821660009081526020819052604090206003015460ff166103325760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b0382166000908152600160205260409081902090516103599083906112d3565b9081526040519081900360200190205460ff166103c25760405162461bcd60e51b815260206004820152602160248201527f526f6c6520646f6573206e6f7420657869737420666f722074686973207573656044820152603960f91b60648201526084016102ee565b6001600160a01b03821660009081526001602052604080822090516103e89084906112d3565b908152604051908190036020018120805492151560ff19909316929092179091556001600160a01b038316907f9f43a01c0d4ff5aff09b3b9b472df707ceefd3f948f8942f10fa1562a8921304906104419084906111b9565b60405180910390a25050565b6001600160a01b03821660009081526020819052604081206003015460ff166104885760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b0383166000908152600160205260409081902090516104af9084906112d3565b9081526040519081900360200190205460ff16905092915050565b6003546001600160a01b031633146104f45760405162461bcd60e51b81526004016102ee90611275565b6001600160a01b03811660009081526020819052604090206003015460ff166105755760405162461bcd60e51b815260206004820152602d60248201527f50617373706f727420646f6573206e6f74206578697374206f7220697320616c60448201526c1c9958591e481c995d9bdad959609a1b60648201526084016102ee565b6001600160a01b038116600081815260208190526040808220600301805460ff19169055517fce34b061929e531701a84e2c69caa19386e763ddfff20ad9e74e91bc0fa05e3d9190a250565b6001600160a01b038116600090815260208190526040812060030154819060ff16156105ef575060016105f3565b5060005b92915050565b60608060008060606000806000886001600160a01b03166001600160a01b031681526020019081526020016000206040518060a0016040529081600082018054610642906112ef565b80601f016020809104026020016040519081016040528092919081815260200182805461066e906112ef565b80156106bb5780601f10610690576101008083540402835291602001916106bb565b820191906000526020600020905b81548152906001019060200180831161069e57829003601f168201915b50505050508152602001600182015481526020016002820180546106de906112ef565b80601f016020809104026020016040519081016040528092919081815260200182805461070a906112ef565b80156107575780601f1061072c57610100808354040283529160200191610757565b820191906000526020600020905b81548152906001019060200180831161073a57829003601f168201915b5050509183525050600382015460ff1615156020820152600482018054604090920191610783906112ef565b80601f01602080910402602001604051908101604052809291908181526020018280546107af906112ef565b80156107fc5780601f106107d1576101008083540402835291602001916107fc565b820191906000526020600020905b8154815290600101906020018083116107df57829003601f168201915b505050505081525050905080606001516108665760405162461bcd60e51b815260206004820152602560248201527f50617373706f727420646f6573206e6f74206578697374206f7220697320696e6044820152641d985b1a5960da1b60648201526084016102ee565b8051604082015160208301516060840151608090940151929a91995097509195509350915050565b6003546001600160a01b031633146108b85760405162461bcd60e51b81526004016102ee90611275565b600380546001600160a01b0319166001600160a01b0383169081179091556040517f44d6d25963f097ad14f29f06854a01f575648a1ef82f30e562ccd3889717e33990600090a250565b6001600160a01b03841660009081526020819052604090206003015460ff161561097f5760405162461bcd60e51b815260206004820152602860248201527f50617373706f727420616c72656164792065786973747320666f722074686973604482015267206164647265737360c01b60648201526084016102ee565b6040805160a0810182528481524260208083019190915281830185905260016060830152608082018490526001600160a01b03871660009081529081905291909120815181906109cf9082611378565b5060208201516001820155604082015160028201906109ee9082611378565b50606082015160038201805460ff191691151591909117905560808201516004820190610a1b9082611378565b505060408051635befe5f760e11b81526001600160a01b0387166004820152602481019190915260076044820152661cdd1d59195b9d60ca1b606482015230915063b7dfcbee90608401600060405180830381600087803b158015610a7f57600080fd5b505af1158015610a93573d6000803e3d6000fd5b50505050836001600160a01b03167faa848e652d95eebf774934955871f8704164550dbd44c982bcf4e2ef33d18e418442604051610ad2929190611438565b60405180910390a250505050565b6001600160a01b03821660009081526020819052604090206003015460ff16610b1b5760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b038216600090815260016020526040908190209051610b429083906112d3565b9081526040519081900360200190205460ff1615610b9a5760405162461bcd60e51b8152602060048201526015602482015274149bdb1948185b1c9958591e48185cdcda59db9959605a1b60448201526064016102ee565b6001806000846001600160a01b03166001600160a01b0316815260200190815260200160002082604051610bce91906112d3565b9081526040805160209281900383019020805460ff1916931515939093179092556001600160a01b0384166000908152600282529182208054600181018255908352912001610c1d8282611378565b50816001600160a01b03167f3565795c2fb8842c21347d277937778bbcfe788b5b4f790fc5e408786cbe9c908260405161044191906111b9565b6001600160a01b03811660009081526020819052604090206003015460609060ff16610c955760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b038216600090815260026020908152604080832080548251818502810185019093528083529193909284015b82821015610d74578382906000526020600020018054610ce7906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610d13906112ef565b8015610d605780601f10610d3557610100808354040283529160200191610d60565b820191906000526020600020905b815481529060010190602001808311610d4357829003601f168201915b505050505081526020019060010190610cc8565b505050509050919050565b600060208190529081526040902080548190610d9a906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610dc6906112ef565b8015610e135780601f10610de857610100808354040283529160200191610e13565b820191906000526020600020905b815481529060010190602001808311610df657829003601f168201915b505050505090806001015490806002018054610e2e906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610e5a906112ef565b8015610ea75780601f10610e7c57610100808354040283529160200191610ea7565b820191906000526020600020905b815481529060010190602001808311610e8a57829003601f168201915b5050506003840154600485018054949560ff909216949193509150610ecb906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610ef7906112ef565b8015610f445780601f10610f1957610100808354040283529160200191610f44565b820191906000526020600020905b815481529060010190602001808311610f2757829003601f168201915b5050505050905085565b80356001600160a01b0381168114610f6557600080fd5b919050565b634e487b7160e01b600052604160045260246000fd5b600082601f830112610f9157600080fd5b813567ffffffffffffffff80821115610fac57610fac610f6a565b604051601f8301601f19908116603f01168101908282118183101715610fd457610fd4610f6a565b81604052838152866020858801011115610fed57600080fd5b836020870160208301376000602085830101528094505050505092915050565b6000806040838503121561102057600080fd5b61102983610f4e565b9150602083013567ffffffffffffffff81111561104557600080fd5b61105185828601610f80565b9150509250929050565b60006020828403121561106d57600080fd5b61107682610f4e565b9392505050565b60005b83811015611098578181015183820152602001611080565b50506000910152565b600081518084526110b981602086016020860161107d565b601f01601f19169290920160200192915050565b60a0815260006110e060a08301886110a1565b82810360208401526110f281886110a1565b90508560408401528415156060840152828103608084015261111481856110a1565b98975050505050505050565b6000806000806080858703121561113657600080fd5b61113f85610f4e565b9350602085013567ffffffffffffffff8082111561115c57600080fd5b61116888838901610f80565b9450604087013591508082111561117e57600080fd5b61118a88838901610f80565b935060608701359150808211156111a057600080fd5b506111ad87828801610f80565b91505092959194509250565b60208152600061107660208301846110a1565b6000602080830181845280855180835260408601915060408160051b870101925083870160005b8281101561122157603f1988860301845261120f8583516110a1565b945092850192908501906001016111f3565b5092979650505050505050565b60a08152600061124160a08301886110a1565b866020840152828103604084015261125981876110a1565b90508415156060840152828103608084015261111481856110a1565b6020808252600d908201526c2737ba103a34329030b236b4b760991b604082015260600190565b60208082526017908201527f50617373706f727420646f6573206e6f74206578697374000000000000000000604082015260600190565b600082516112e581846020870161107d565b9190910192915050565b600181811c9082168061130357607f821691505b60208210810361132357634e487b7160e01b600052602260045260246000fd5b50919050565b601f82111561137357600081815260208120601f850160051c810160208610156113505750805b601f850160051c820191505b8181101561136f5782815560010161135c565b5050505b505050565b815167ffffffffffffffff81111561139257611392610f6a565b6113a6816113a084546112ef565b84611329565b602080601f8311600181146113db57600084156113c35750858301515b600019600386901b1c1916600185901b17855561136f565b600085815260208120601f198616915b8281101561140a578886015182559484019460019091019084016113eb565b50858210156114285787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60408152600061144b60408301856110a1565b9050826020830152939250505056fea2646970667358221220c7bb3e54012fa99e3397fc54c264550f213af771ab79d5b10cc59abcb542f9fd64736f6c63430008140033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100ea5760003560e01c806384f526401161008c578063b7dfcbee11610066578063b7dfcbee1461025a578063ce6ccfaf1461026d578063e37c132b1461028d578063f851a440146102b157600080fd5b806384f52640146101c85780638da5cb5b146101db578063925639391461021a57600080fd5b80634a4a15d4116100c85780634a4a15d41461013f5780635e197a0f1461017e5780636fe512bc14610191578063704b6c02146101b557600080fd5b806308789521146100ef578063217fe6c6146101045780632eb415bd1461012c575b600080fd5b6101026100fd36600461100d565b6102c4565b005b61011761011236600461100d565b61044d565b60405190151581526020015b60405180910390f35b61010261013a36600461105b565b6104ca565b61011761014d36600461100d565b6001602090815260009283526040909220815180830184018051928152908401929093019190912091525460ff1681565b61011761018c36600461105b565b6105c1565b6101a461019f36600461105b565b6105f9565b6040516101239594939291906110cd565b6101026101c336600461105b565b61088e565b6101026101d6366004611120565b610902565b6102027f000000000000000000000000000000000000000000000000000000000000000081565b6040516001600160a01b039091168152602001610123565b61024d604051806040016040528060148152602001734d7950617373706f727420436f6e74726163742160601b81525081565b60405161012391906111b9565b61010261026836600461100d565b610ae0565b61028061027b36600461105b565b610c57565b60405161012391906111cc565b6102a061029b36600461105b565b610d7f565b60405161012395949392919061122e565b600354610202906001600160a01b031681565b6003546001600160a01b031633146102f75760405162461bcd60e51b81526004016102ee90611275565b60405180910390fd5b6001600160a01b03821660009081526020819052604090206003015460ff166103325760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b0382166000908152600160205260409081902090516103599083906112d3565b9081526040519081900360200190205460ff166103c25760405162461bcd60e51b815260206004820152602160248201527f526f6c6520646f6573206e6f7420657869737420666f722074686973207573656044820152603960f91b60648201526084016102ee565b6001600160a01b03821660009081526001602052604080822090516103e89084906112d3565b908152604051908190036020018120805492151560ff19909316929092179091556001600160a01b038316907f9f43a01c0d4ff5aff09b3b9b472df707ceefd3f948f8942f10fa1562a8921304906104419084906111b9565b60405180910390a25050565b6001600160a01b03821660009081526020819052604081206003015460ff166104885760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b0383166000908152600160205260409081902090516104af9084906112d3565b9081526040519081900360200190205460ff16905092915050565b6003546001600160a01b031633146104f45760405162461bcd60e51b81526004016102ee90611275565b6001600160a01b03811660009081526020819052604090206003015460ff166105755760405162461bcd60e51b815260206004820152602d60248201527f50617373706f727420646f6573206e6f74206578697374206f7220697320616c60448201526c1c9958591e481c995d9bdad959609a1b60648201526084016102ee565b6001600160a01b038116600081815260208190526040808220600301805460ff19169055517fce34b061929e531701a84e2c69caa19386e763ddfff20ad9e74e91bc0fa05e3d9190a250565b6001600160a01b038116600090815260208190526040812060030154819060ff16156105ef575060016105f3565b5060005b92915050565b60608060008060606000806000886001600160a01b03166001600160a01b031681526020019081526020016000206040518060a0016040529081600082018054610642906112ef565b80601f016020809104026020016040519081016040528092919081815260200182805461066e906112ef565b80156106bb5780601f10610690576101008083540402835291602001916106bb565b820191906000526020600020905b81548152906001019060200180831161069e57829003601f168201915b50505050508152602001600182015481526020016002820180546106de906112ef565b80601f016020809104026020016040519081016040528092919081815260200182805461070a906112ef565b80156107575780601f1061072c57610100808354040283529160200191610757565b820191906000526020600020905b81548152906001019060200180831161073a57829003601f168201915b5050509183525050600382015460ff1615156020820152600482018054604090920191610783906112ef565b80601f01602080910402602001604051908101604052809291908181526020018280546107af906112ef565b80156107fc5780601f106107d1576101008083540402835291602001916107fc565b820191906000526020600020905b8154815290600101906020018083116107df57829003601f168201915b505050505081525050905080606001516108665760405162461bcd60e51b815260206004820152602560248201527f50617373706f727420646f6573206e6f74206578697374206f7220697320696e6044820152641d985b1a5960da1b60648201526084016102ee565b8051604082015160208301516060840151608090940151929a91995097509195509350915050565b6003546001600160a01b031633146108b85760405162461bcd60e51b81526004016102ee90611275565b600380546001600160a01b0319166001600160a01b0383169081179091556040517f44d6d25963f097ad14f29f06854a01f575648a1ef82f30e562ccd3889717e33990600090a250565b6001600160a01b03841660009081526020819052604090206003015460ff161561097f5760405162461bcd60e51b815260206004820152602860248201527f50617373706f727420616c72656164792065786973747320666f722074686973604482015267206164647265737360c01b60648201526084016102ee565b6040805160a0810182528481524260208083019190915281830185905260016060830152608082018490526001600160a01b03871660009081529081905291909120815181906109cf9082611378565b5060208201516001820155604082015160028201906109ee9082611378565b50606082015160038201805460ff191691151591909117905560808201516004820190610a1b9082611378565b505060408051635befe5f760e11b81526001600160a01b0387166004820152602481019190915260076044820152661cdd1d59195b9d60ca1b606482015230915063b7dfcbee90608401600060405180830381600087803b158015610a7f57600080fd5b505af1158015610a93573d6000803e3d6000fd5b50505050836001600160a01b03167faa848e652d95eebf774934955871f8704164550dbd44c982bcf4e2ef33d18e418442604051610ad2929190611438565b60405180910390a250505050565b6001600160a01b03821660009081526020819052604090206003015460ff16610b1b5760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b038216600090815260016020526040908190209051610b429083906112d3565b9081526040519081900360200190205460ff1615610b9a5760405162461bcd60e51b8152602060048201526015602482015274149bdb1948185b1c9958591e48185cdcda59db9959605a1b60448201526064016102ee565b6001806000846001600160a01b03166001600160a01b0316815260200190815260200160002082604051610bce91906112d3565b9081526040805160209281900383019020805460ff1916931515939093179092556001600160a01b0384166000908152600282529182208054600181018255908352912001610c1d8282611378565b50816001600160a01b03167f3565795c2fb8842c21347d277937778bbcfe788b5b4f790fc5e408786cbe9c908260405161044191906111b9565b6001600160a01b03811660009081526020819052604090206003015460609060ff16610c955760405162461bcd60e51b81526004016102ee9061129c565b6001600160a01b038216600090815260026020908152604080832080548251818502810185019093528083529193909284015b82821015610d74578382906000526020600020018054610ce7906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610d13906112ef565b8015610d605780601f10610d3557610100808354040283529160200191610d60565b820191906000526020600020905b815481529060010190602001808311610d4357829003601f168201915b505050505081526020019060010190610cc8565b505050509050919050565b600060208190529081526040902080548190610d9a906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610dc6906112ef565b8015610e135780601f10610de857610100808354040283529160200191610e13565b820191906000526020600020905b815481529060010190602001808311610df657829003601f168201915b505050505090806001015490806002018054610e2e906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610e5a906112ef565b8015610ea75780601f10610e7c57610100808354040283529160200191610ea7565b820191906000526020600020905b815481529060010190602001808311610e8a57829003601f168201915b5050506003840154600485018054949560ff909216949193509150610ecb906112ef565b80601f0160208091040260200160405190810160405280929190818152602001828054610ef7906112ef565b8015610f445780601f10610f1957610100808354040283529160200191610f44565b820191906000526020600020905b815481529060010190602001808311610f2757829003601f168201915b5050505050905085565b80356001600160a01b0381168114610f6557600080fd5b919050565b634e487b7160e01b600052604160045260246000fd5b600082601f830112610f9157600080fd5b813567ffffffffffffffff80821115610fac57610fac610f6a565b604051601f8301601f19908116603f01168101908282118183101715610fd457610fd4610f6a565b81604052838152866020858801011115610fed57600080fd5b836020870160208301376000602085830101528094505050505092915050565b6000806040838503121561102057600080fd5b61102983610f4e565b9150602083013567ffffffffffffffff81111561104557600080fd5b61105185828601610f80565b9150509250929050565b60006020828403121561106d57600080fd5b61107682610f4e565b9392505050565b60005b83811015611098578181015183820152602001611080565b50506000910152565b600081518084526110b981602086016020860161107d565b601f01601f19169290920160200192915050565b60a0815260006110e060a08301886110a1565b82810360208401526110f281886110a1565b90508560408401528415156060840152828103608084015261111481856110a1565b98975050505050505050565b6000806000806080858703121561113657600080fd5b61113f85610f4e565b9350602085013567ffffffffffffffff8082111561115c57600080fd5b61116888838901610f80565b9450604087013591508082111561117e57600080fd5b61118a88838901610f80565b935060608701359150808211156111a057600080fd5b506111ad87828801610f80565b91505092959194509250565b60208152600061107660208301846110a1565b6000602080830181845280855180835260408601915060408160051b870101925083870160005b8281101561122157603f1988860301845261120f8583516110a1565b945092850192908501906001016111f3565b5092979650505050505050565b60a08152600061124160a08301886110a1565b866020840152828103604084015261125981876110a1565b90508415156060840152828103608084015261111481856110a1565b6020808252600d908201526c2737ba103a34329030b236b4b760991b604082015260600190565b60208082526017908201527f50617373706f727420646f6573206e6f74206578697374000000000000000000604082015260600190565b600082516112e581846020870161107d565b9190910192915050565b600181811c9082168061130357607f821691505b60208210810361132357634e487b7160e01b600052602260045260246000fd5b50919050565b601f82111561137357600081815260208120601f850160051c810160208610156113505750805b601f850160051c820191505b8181101561136f5782815560010161135c565b5050505b505050565b815167ffffffffffffffff81111561139257611392610f6a565b6113a6816113a084546112ef565b84611329565b602080601f8311600181146113db57600084156113c35750858301515b600019600386901b1c1916600185901b17855561136f565b600085815260208120601f198616915b8281101561140a578886015182559484019460019091019084016113eb565b50858210156114285787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b60408152600061144b60408301856110a1565b9050826020830152939250505056fea2646970667358221220c7bb3e54012fa99e3397fc54c264550f213af771ab79d5b10cc59abcb542f9fd64736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1329,
+        "contract": "contracts/MyPassport.sol:MyPassport",
+        "label": "passports",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_struct(Passport)1321_storage)"
+      },
+      {
+        "astId": 1335,
+        "contract": "contracts/MyPassport.sol:MyPassport",
+        "label": "roles",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_address,t_mapping(t_string_memory_ptr,t_bool))"
+      },
+      {
+        "astId": 1340,
+        "contract": "contracts/MyPassport.sol:MyPassport",
+        "label": "userRoles",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_array(t_string_storage)dyn_storage)"
+      },
+      {
+        "astId": 1344,
+        "contract": "contracts/MyPassport.sol:MyPassport",
+        "label": "admin",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_string_storage)dyn_storage": {
+        "base": "t_string_storage",
+        "encoding": "dynamic_array",
+        "label": "string[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_array(t_string_storage)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => string[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_string_storage)dyn_storage"
+      },
+      "t_mapping(t_address,t_mapping(t_string_memory_ptr,t_bool))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(string => bool))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_string_memory_ptr,t_bool)"
+      },
+      "t_mapping(t_address,t_struct(Passport)1321_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct MyPassport.Passport)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Passport)1321_storage"
+      },
+      "t_mapping(t_string_memory_ptr,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_string_memory_ptr",
+        "label": "mapping(string => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_string_memory_ptr": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Passport)1321_storage": {
+        "encoding": "inplace",
+        "label": "struct MyPassport.Passport",
+        "members": [
+          {
+            "astId": 1312,
+            "contract": "contracts/MyPassport.sol:MyPassport",
+            "label": "fullName",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1314,
+            "contract": "contracts/MyPassport.sol:MyPassport",
+            "label": "issueDate",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 1316,
+            "contract": "contracts/MyPassport.sol:MyPassport",
+            "label": "bio",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 1318,
+            "contract": "contracts/MyPassport.sol:MyPassport",
+            "label": "isValid",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_bool"
+          },
+          {
+            "astId": 1320,
+            "contract": "contracts/MyPassport.sol:MyPassport",
+            "label": "userId",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_string_storage"
+          }
+        ],
+        "numberOfBytes": "160"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

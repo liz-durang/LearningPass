@@ -35,11 +35,17 @@
     "verify": "yarn workspace @se-2/hardhat verify"
   },
   "devDependencies": {
+    "@types/react-slick": "^0",
+    "@types/slick-carousel": "^1",
     "husky": "~8.0.3",
     "lint-staged": "~13.2.2"
   },
   "packageManager": "yarn@3.2.3",
   "engines": {
     "node": ">=18.18.0"
+  },
+  "dependencies": {
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   }
 }

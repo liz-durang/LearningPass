@@ -1,0 +1,28 @@
+g1. Ubicar en que rama estoy 
+git branch 
+
+2. Ubicarme en la rama development
+git checkout development 
+
+3. Actualizar mi rama
+git pull origin development 
+
+4. Crear una nueva rama por feature
+git checkout -b <form-espaniol> development 
+
+5. Hacer cambios 
+
+6. Colocarme en rama del feature
+git checkout <form-espaniol> 
+
+7. Agrega los cambios al área de preparación 
+git add . 
+
+8. Confirma los cambios
+git commit -m ""
+
+9. Subir cambios en la rama especifica
+git push origin <form-espaniol>
+
+9. Hacer pull request en github
+

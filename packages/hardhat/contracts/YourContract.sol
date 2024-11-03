@@ -14,7 +14,18 @@ import "hardhat/console.sol";
  */
 contract YourContract {
 
+	//Counter Example by Workshop
+	
+	uint256 public counter = 42;
 
+	function increment()  public  {
+		require(msg.sender == 0x66984DB08686fCFe2902DaF68DbEA6A13Bb0e77E, "Not the Owner");
+		counter += 1;
+	}
+
+	function decrement()  public {
+		counter -= 1;
+	}
 
 	// State Variables
 	address public immutable owner;
