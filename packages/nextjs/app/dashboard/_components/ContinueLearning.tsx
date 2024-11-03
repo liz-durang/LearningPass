@@ -69,7 +69,7 @@ export const ContinueLearning: React.FC<ContinueLearningProps> = ({
   // Objeto del curso con valores por defecto
   const course = {
     id: idCourse ?? idFirstCourse, // Usar idCourse si existe, de lo contrario usar idFirstCourse
-    logo: "/logo.svg", // Reemplaza con la URL de tu logo
+    logo: "/images/vottun101.webp", // Reemplaza con la URL de tu logo
     name: name || courseName,
     description: description || courseDescription,
     provider: provider || courseProvider,
@@ -93,7 +93,7 @@ export const ContinueLearning: React.FC<ContinueLearningProps> = ({
 
   return (
     <>
-      <p className="my-0 text-xl font-semibold">{enrolled ? "Continue Learning..." : "Enroll to Course"}</p>
+      <p className="my-0 text-xl font-semibold">{enrolled ? "Continue Learning..." : "Enroll now"}</p>
 
       <div className="z-10">
         <div className="flex flex-col bg-base-100 dark:bg-gray-800 rounded-3xl shadow-md border border-base-300 dark:border-gray-700 relative p-6">

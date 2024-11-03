@@ -1,0 +1,630 @@
+{
+  "address": "0x241697B169f82B1941C8Ce6acf7D9dF3ad36C3ce",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address payable",
+          "name": "_stakingManagerAddress",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "courseId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardClaimed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "courseId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "courseId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "RewardWithdrawn",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_student",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_completionTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "claimRewardTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contractTag",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_attemp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_provider",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        }
+      ],
+      "name": "createRewardAttemp",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_timeLimit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_provider",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_description",
+          "type": "string"
+        }
+      ],
+      "name": "createRewardTime",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAllRewardsByCourse",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "description",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "rewardType",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "totalAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timeLimit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "attemp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "exists",
+              "type": "bool"
+            },
+            {
+              "internalType": "string",
+              "name": "provider",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct RewardManager.Reward[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rewardIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRewardAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_rewardType",
+          "type": "string"
+        }
+      ],
+      "name": "getRewardIndexByType",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_rewardIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeRewardTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rewardCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "rewards",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "rewardType",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "totalAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timeLimit",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "attemp",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "exists",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "provider",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "stakingManager",
+      "outputs": [
+        {
+          "internalType": "contract StakingManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_courseId",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawRewardTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x8b7e94bc0ee44da349bb0d0008a59fb633be684478fd085e6ee947ee8552b523",
+  "receipt": {
+    "to": null,
+    "from": "0xAAeCA2a5703a6ea642Dd7bCF73E1E9c39d26f12C",
+    "contractAddress": "0x241697B169f82B1941C8Ce6acf7D9dF3ad36C3ce",
+    "transactionIndex": 4,
+    "gasUsed": "1767227",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x56f519631b27bcc371d87789041b2306508ddb3f0e84f5e53f4f88137b4bee56",
+    "transactionHash": "0x8b7e94bc0ee44da349bb0d0008a59fb633be684478fd085e6ee947ee8552b523",
+    "logs": [],
+    "blockNumber": 94174765,
+    "cumulativeGasUsed": "2328981",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xAAeCA2a5703a6ea642Dd7bCF73E1E9c39d26f12C",
+    "0x6FCC7268FD2F7aED5B8E6b28517b2E0cc1607700"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "377d2191a264e9c8bfe41996b0c07254",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"internalType\":\"address payable\",\"name\":\"_stakingManagerAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"courseId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"courseId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"courseId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rewardIndex\",\"type\":\"uint256\"}],\"name\":\"RewardRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rewardIndex\",\"type\":\"uint256\"}],\"name\":\"RewardWithdrawn\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_student\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_completionTime\",\"type\":\"uint256\"}],\"name\":\"claimRewardTime\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"contractTag\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_attemp\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_provider\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"createRewardAttemp\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_timeLimit\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_provider\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_description\",\"type\":\"string\"}],\"name\":\"createRewardTime\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"}],\"name\":\"getAllRewardsByCourse\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"rewardType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timeLimit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"attemp\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"exists\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"provider\",\"type\":\"string\"}],\"internalType\":\"struct RewardManager.Reward[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewardIndex\",\"type\":\"uint256\"}],\"name\":\"getRewardAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_rewardType\",\"type\":\"string\"}],\"name\":\"getRewardIndexByType\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_rewardIndex\",\"type\":\"uint256\"}],\"name\":\"removeRewardTime\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rewardCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"rewards\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"rewardType\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"totalAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timeLimit\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"attemp\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"exists\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"provider\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"stakingManager\",\"outputs\":[{\"internalType\":\"contract StakingManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_courseId\",\"type\":\"uint256\"}],\"name\":\"withdrawRewardTime\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/RewardManager.sol\":\"RewardManager\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/RewardManager.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\nimport \\\"./StakingManager.sol\\\";\\n\\ncontract RewardManager {\\n    struct Reward {\\n        string description;\\n        string rewardType;\\n        uint256 totalAmount; //Amount for all the students\\n        uint256 amount; // Amount of reward by student\\n        uint256 timeLimit; // Time limit to earn the reward\\n        uint256 attemp; //limit of attemp to earn a reward\\n        bool exists; // Check if the reward exists\\n        string provider;\\n    }\\n\\n    string public constant contractTag = \\\"Reward Manager Contract!\\\";\\n    address public owner;\\n    uint256 public rewardCount;\\n\\n    mapping(uint256 => Reward[]) public rewards; // Rewards for each course\\n\\n    StakingManager public stakingManager;\\n\\n    event RewardCreated(uint256 courseId, uint256 amount);\\n    event RewardClaimed(uint256 courseId, address student, uint256 amount);\\n    event RewardRemoved(uint256 courseId, uint256 rewardIndex);\\n    event RewardWithdrawn(address user, uint256 rewardIndex);\\n\\n\\n    constructor(address _owner, address payable _stakingManagerAddress) {\\n        owner = _owner;\\n        stakingManager = StakingManager(_stakingManagerAddress);\\n    }\\n\\n    function createRewardTime(uint256 _courseId, uint256 _amount, uint256 _timeLimit, string memory _provider, string memory _description) public payable{\\n        require(_amount > 0, \\\"Reward amount must be greater than zero\\\");\\n        require(msg.value > _amount, \\\"Total reward amount must be greater than amount\\\");\\n\\n        // Verificar si ya existe un Reward de tipo \\\"Time\\\" para este curso\\n        uint256 existingRewardIndex;\\n        bool exists = false;\\n\\n        try this.getRewardIndexByType(_courseId, \\\"Time\\\") returns (uint256 index) {\\n            existingRewardIndex = index;\\n            exists = true; // Si se encuentra, se establece exists a true\\n        } catch {\\n            exists = false; // Si no se encuentra, permanece false\\n        }\\n\\n        require(!exists, \\\"Reward of type 'Time' already exists for this course\\\");\\n\\n        rewards[_courseId].push(Reward({\\n            rewardType: \\\"Time\\\",\\n            totalAmount: msg.value,\\n            amount: _amount,\\n            timeLimit: _timeLimit,\\n            attemp: 0,\\n            exists: true, \\n            provider: _provider,\\n            description: _description\\n        }));\\n\\n        stakingManager.depositRewardStake{value: msg.value}(rewardCount);\\n        rewardCount++;\\n\\n        emit RewardCreated(_courseId, _amount);\\n    }\\n\\n    function createRewardAttemp(uint256 _courseId, uint256 _amount, uint256 _attemp, string memory _provider, string memory _description) public payable{\\n        require(_amount > 0, \\\"Reward amount must be greater than zero\\\");\\n        require(msg.value > _amount, \\\"Total reward amount must be greater than amount\\\");\\n\\n        // Verificar si ya existe un Reward de tipo \\\"Time\\\" para este curso\\n        uint256 existingRewardIndex;\\n        bool exists = false;\\n\\n        try this.getRewardIndexByType(_courseId, \\\"Attemp\\\") returns (uint256 index) {\\n            existingRewardIndex = index;\\n            exists = true; // Si se encuentra, se establece exists a true\\n        } catch {\\n            exists = false; // Si no se encuentra, permanece false\\n        }\\n\\n        require(!exists, \\\"Reward of type 'Attemp' already exists for this course\\\");\\n\\n        rewards[_courseId].push(Reward({\\n            rewardType: \\\"Attemp\\\",\\n            totalAmount: msg.value,\\n            amount: _amount,\\n            timeLimit: 0,\\n            attemp: _attemp,\\n            exists: true, \\n            provider: _provider,\\n            description: _description\\n        }));\\n\\n        stakingManager.depositRewardStake{value: msg.value}(rewardCount);\\n        rewardCount++;\\n\\n        emit RewardCreated(_courseId, _amount);\\n    }\\n\\n\\n    function claimRewardTime(uint256 _courseId, address _student, uint256 _completionTime) public {\\n        uint256 rewardIndex = getRewardIndexByType(_courseId, \\\"Time\\\");\\n        \\n        Reward storage reward = rewards[_courseId][rewardIndex];\\n        require(reward.exists, \\\"Reward does not exist\\\");\\n        require(_completionTime < reward.timeLimit, \\\"Completion time exceeds reward time limit\\\");\\n\\n        // Transferir la recompensa al estudiante\\n        stakingManager.claimReward(_student, reward.amount, rewardIndex);\\n\\n        emit RewardClaimed(_courseId, _student, reward.amount);\\n    }\\n\\n    // Function to allow the user to withdraw their specific reward\\n    // Function to allow the user to withdraw their specific reward\\n    function withdrawRewardTime(address _user, uint256 _courseId) public {\\n        uint256 rewardIndex = getRewardIndexByType(_courseId, \\\"Time\\\");\\n        \\n        Reward storage reward = rewards[_courseId][rewardIndex];\\n        require(reward.exists, \\\"Reward does not exist\\\");\\n\\n        // Comprobar que hay suficiente balance para el retiro\\n        require(reward.amount > 0, \\\"No reward to withdraw.\\\");\\n\\n        // L\\u00f3gica para retirar la recompensa del stakingManager\\n        stakingManager.withdrawStakeReward(_user, rewardIndex);\\n        reward.exists = false; // Marcar como no existente para evitar el retiro duplicado\\n\\n        emit RewardWithdrawn(_user, rewardIndex);\\n    }\\n\\n\\n\\n    function getRewardAmount(uint256 _courseId, uint256 rewardIndex) public view returns (uint256) {\\n        require(rewardIndex < rewards[_courseId].length, \\\"Reward index out of bounds\\\");\\n        return rewards[_courseId][rewardIndex].amount;\\n    }\\n\\n    function getRewardIndexByType(uint256 _courseId, string memory _rewardType) public view returns (uint256) {\\n        Reward[] memory courseRewards = rewards[_courseId];\\n        for (uint256 i = 0; i < courseRewards.length; i++) {\\n            if (keccak256(abi.encodePacked(courseRewards[i].rewardType)) == keccak256(abi.encodePacked(_rewardType))) {\\n                return i; // Retorna el \\u00edndice si se encuentra\\n            }\\n        }\\n        revert(\\\"Reward type not found\\\"); // Revertir si no se encuentra el tipo de recompensa\\n    }   \\n\\n    function removeRewardTime(uint256 _courseId, uint256 _rewardIndex) public {\\n        require(_rewardIndex < rewards[_courseId].length, \\\"Reward index out of bounds\\\");\\n        Reward storage rewardToRemove = rewards[_courseId][_rewardIndex];\\n        require(rewardToRemove.exists, \\\"Reward does not exist\\\");\\n\\n        // Mover el \\u00faltimo elemento al \\u00edndice que queremos eliminar y luego reducir el tama\\u00f1o del array\\n        rewards[_courseId][_rewardIndex] = rewards[_courseId][rewards[_courseId].length - 1];\\n        rewards[_courseId].pop();\\n\\n        // Emitir evento de eliminaci\\u00f3n de recompensa\\n        emit RewardRemoved(_courseId, _rewardIndex);\\n    }\\n\\n    function rewardExists(uint256 _courseId, string memory _rewardType) internal view returns (bool) {\\n        Reward[] memory courseRewards = rewards[_courseId];\\n        for (uint256 i = 0; i < courseRewards.length; i++) {\\n            if (keccak256(abi.encodePacked(courseRewards[i].rewardType)) == keccak256(abi.encodePacked(_rewardType))) {\\n                return true;\\n            }\\n        }\\n        return false; \\n\\n    }\\n\\n    function getAllRewardsByCourse(uint256 _courseId) public view returns (Reward[] memory) {\\n    return rewards[_courseId];\\n}\\n\\n\\n\\n\\n\\n   \\n}\\n\",\"keccak256\":\"0xbc5a44ff6637f40be0963180f0fc9b240cc5c5f62ebce97943a1a9354ef0be40\",\"license\":\"MIT\"},\"contracts/StakingManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ncontract StakingManager {\\n    string public constant contractTag = \\\"Staking Manager Contract!\\\";\\n    address public owner;\\n\\n    // Mapping to store the stake amount per user per course\\n    mapping(address => mapping(uint256 => uint256)) public stakesCourses;\\n\\n    // Mapping to store all courses a user has stakes in \\n    mapping(address => uint256[]) private userCourses;\\n\\n    //Mapping to store de stake amount per award \\n    mapping(uint256 => uint256) public amountRewards;\\n\\n    // Mapping to store the stake amount per user per reward\\n    mapping(address => mapping(uint256 => uint256)) public stakesRewards;\\n\\n    // Mapping to store all reward a user has claim in \\n    mapping(address => uint256[]) private userRewards;\\n\\n    // Mapping para saber si un usuario ha retirado su participaci\\u00f3n en un curso\\n    mapping(address => mapping(uint256 => bool)) public hasWithdrawn;\\n\\n    event CourseStakeDeposited(address indexed user, uint256 courseId, uint256 amount);\\n    event CourseStakeWithdrawn(address indexed user, uint256 courseId, uint256 amount);\\n    event RewardStakeDeposited(uint256 rewardId, uint256 amount);\\n    event RewardStakeClaimed(address indexed user, uint256 amount);\\n    event RewardStakeWithdrawn(address indexed user, uint256 rewardId, uint256 amount);\\n    event ContractFunded(address indexed owner, uint256 amount);\\n\\n\\n    modifier onlyOwner() {\\n        require(msg.sender == owner, \\\"Only the owner can perform this action\\\");\\n        _;\\n    }\\n\\n    constructor(address _owner) {\\n        owner = _owner;\\n    }\\n\\n    // Function to deposit a stake for a specific course\\n    function depositCourseStake(address _user, uint256 _courseId) public payable {\\n        require(msg.value > 0, \\\"Stake must be greater than zero\\\");\\n\\n        // If this is the first stake for this course, add it to userCourses\\n        if (stakesCourses[_user][_courseId] == 0) {\\n            userCourses[_user].push(_courseId);\\n        }\\n\\n        stakesCourses[_user][_courseId] += msg.value;\\n        \\n        emit CourseStakeDeposited(_user, _courseId, msg.value);\\n    }\\n\\n    // Function to deposit a stake for a specific reward\\n    function depositRewardStake(uint256 _rewardId) public payable {\\n        require(msg.value > 0, \\\"Stake must be greater than zero\\\");\\n        \\n        // Sumar el nuevo dep\\u00f3sito a la cantidad existente\\n        amountRewards[_rewardId] += msg.value;\\n\\n        emit RewardStakeDeposited(_rewardId, msg.value);\\n    }\\n\\n\\n    // Function to user deposit rewards \\n    function claimReward(address _user, uint256 amount, uint256 rewardIndex) public {\\n        require(amount > 0, \\\"Reward amount must be greater than zero\\\");\\n        require(address(this).balance >= amount, \\\"Insufficient contract balance\\\");\\n\\n        // Transferir la recompensa al estudiante\\n        // Sumar la cantidad a las recompensas del usuario\\n        \\n\\n        // If this is the first stake for this reward, add it to userRewards\\n        if (stakesRewards[_user][rewardIndex] == 0) {\\n            userRewards[_user].push(rewardIndex);\\n        }\\n        stakesRewards[_user][rewardIndex] += amount;\\n\\n        emit RewardStakeClaimed(_user, amount);\\n    }\\n\\n    // Function to withdraw a user's stake for a specific course\\n    function withdrawStakeCourse(address _user, uint256 _courseId) public {\\n        uint256 stakedAmount = stakesCourses[_user][_courseId];\\n        require(stakedAmount > 0, \\\"No stake to withdraw for this course\\\");\\n        require(!hasWithdrawn[_user][_courseId], \\\"Stake already withdrawn for this course\\\"); // Verifica si ya se ha retirado\\n\\n        stakesCourses[_user][_courseId] = 0;\\n        hasWithdrawn[_user][_courseId] = true; // Marca que se ha retirado\\n        payable(_user).transfer(stakedAmount);\\n        emit CourseStakeWithdrawn(_user, _courseId, stakedAmount);\\n    }\\n\\n    function checkWithdrawStatus(address _user, uint256 _courseId) public view returns (bool) {\\n        return hasWithdrawn[_user][_courseId]; // Retorna true si ya ha retirado, false si no\\n    }\\n    \\n\\n    // Function to withdraw a user's stake for a specific reward\\n    function withdrawStakeReward(address _user, uint256 _rewardId) public {\\n        uint256 stakedAmount = stakesCourses[_user][_rewardId];\\n        require(stakedAmount > 0, \\\"No stake to withdraw for this reward\\\");\\n\\n        stakesRewards[_user][_rewardId] = 0;\\n        payable(_user).transfer(stakedAmount);\\n        emit RewardStakeWithdrawn(_user, _rewardId, stakedAmount);\\n    }\\n    \\n\\n    // Check the amount of staked ETH for a user in a specific course\\n    function getStakeCourse(address _user, uint256 _courseId) public view returns (uint256) {\\n        return stakesCourses[_user][_courseId];\\n    }\\n\\n    // Function to get the total stake of a user across all courses\\n    // Function to get the total stake of a user across all courses and count the number of courses\\n    function getTotalStakeCourses(address _user) public view returns (uint256 totalStake, uint256 courseCount) {\\n        uint256[] memory courses = userCourses[_user];\\n        courseCount = 0; // Inicializa el contador de cursos\\n        totalStake = 0; // Inicializa el total de stakes\\n\\n        for (uint256 i = 0; i < courses.length; i++) {\\n            uint256 stakeAmount = stakesCourses[_user][courses[i]];\\n            if (stakeAmount > 0) { // Solo cuenta los cursos con un stake mayor a 0\\n                totalStake += stakeAmount;\\n                courseCount++; // Incrementa el contador de cursos\\n            }\\n        }\\n    }\\n\\n    // Allow the contract to receive Ether\\n    receive() external payable {}\\n\\n     // Function to fund the contract\\n    function fundContract() public payable {\\n        require(msg.value > 0, \\\"Funding amount must be greater than zero\\\");\\n        emit ContractFunded(msg.sender, msg.value); // Emitir evento al fondear el contrato\\n    }\\n\\n    // Function to get the balance of the contract\\n    function getContractBalance() public view returns (uint256) {\\n        return address(this).balance; // Retorna el balance actual del contrato en wei\\n    }\\n}\\n\",\"keccak256\":\"0x7c2fefa08a544994af88645a06f19817dc0b0ea83cc00a300f37cc70e77e196b\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5060405162001e0d38038062001e0d83398101604081905262000034916200007f565b600080546001600160a01b039384166001600160a01b03199182161790915560038054929093169116179055620000be565b6001600160a01b03811681146200007c57600080fd5b50565b600080604083850312156200009357600080fd5b8251620000a08162000066565b6020840151909250620000b38162000066565b809150509250929050565b611d3f80620000ce6000396000f3fe6080604052600436106100c25760003560e01c80638da5cb5b1161007f578063a286e04f11610059578063a286e04f14610254578063bb72f14614610267578063c572429e14610287578063ebf5ce70146102a757600080fd5b80638da5cb5b146101cb57806392563939146101eb5780639fa1342f1461024157600080fd5b806322828cc2146100c757806336d2c241146101045780633bae1447146101265780633e7e366e1461015357806341b147021461018757806379085425146101b5575b600080fd5b3480156100d357600080fd5b506003546100e7906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561011057600080fd5b5061012461011f3660046115cb565b6102c7565b005b34801561013257600080fd5b506101466101413660046115f5565b61045b565b6040516100fb919061165e565b34801561015f57600080fd5b5061017361016e366004611736565b6106bf565b6040516100fb989796959493929190611758565b34801561019357600080fd5b506101a76101a2366004611866565b6108c9565b6040519081526020016100fb565b3480156101c157600080fd5b506101a760015481565b3480156101d757600080fd5b506000546100e7906001600160a01b031681565b3480156101f757600080fd5b506102346040518060400160405280601881526020017f526577617264204d616e6167657220436f6e747261637421000000000000000081525081565b6040516100fb91906118ad565b61012461024f3660046118c7565b610bfa565b6101246102623660046118c7565b610eee565b34801561027357600080fd5b506101a7610282366004611736565b6110b4565b34801561029357600080fd5b506101246102a2366004611948565b61114b565b3480156102b357600080fd5b506101246102c2366004611736565b6112fa565b60006102ef826040518060400160405280600481526020016354696d6560e01b8152506108c9565b600083815260026020526040812080549293509091839081106103145761031461197d565b60009182526020909120600890910201600681015490915060ff166103545760405162461bcd60e51b815260040161034b90611993565b60405180910390fd5b60008160030154116103a15760405162461bcd60e51b81526020600482015260166024820152752737903932bbb0b932103a37903bb4ba34323930bb9760511b604482015260640161034b565b600354604051636f15f23b60e11b81526001600160a01b038681166004830152602482018590529091169063de2be47690604401600060405180830381600087803b1580156103ef57600080fd5b505af1158015610403573d6000803e3d6000fd5b5050505060068101805460ff19169055604080516001600160a01b0386168152602081018490527f1d3eee4ca001cff39eec6ec7615aacf2f2bd61791273830728ba00ccbd6e1337910160405180910390a150505050565b606060026000838152602001908152602001600020805480602002602001604051908101604052809291908181526020016000905b828210156106b45783829060005260206000209060080201604051806101000160405290816000820180546104c4906119c2565b80601f01602080910402602001604051908101604052809291908181526020018280546104f0906119c2565b801561053d5780601f106105125761010080835404028352916020019161053d565b820191906000526020600020905b81548152906001019060200180831161052057829003601f168201915b50505050508152602001600182018054610556906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610582906119c2565b80156105cf5780601f106105a4576101008083540402835291602001916105cf565b820191906000526020600020905b8154815290600101906020018083116105b257829003601f168201915b505050918352505060028201546020820152600382015460408201526004820154606082015260058201546080820152600682015460ff16151560a082015260078201805460c090920191610623906119c2565b80601f016020809104026020016040519081016040528092919081815260200182805461064f906119c2565b801561069c5780601f106106715761010080835404028352916020019161069c565b820191906000526020600020905b81548152906001019060200180831161067f57829003601f168201915b50505050508152505081526020019060010190610490565b505050509050919050565b600260205281600052604060002081815481106106db57600080fd5b9060005260206000209060080201600091509150508060000180546106ff906119c2565b80601f016020809104026020016040519081016040528092919081815260200182805461072b906119c2565b80156107785780601f1061074d57610100808354040283529160200191610778565b820191906000526020600020905b81548152906001019060200180831161075b57829003601f168201915b50505050509080600101805461078d906119c2565b80601f01602080910402602001604051908101604052809291908181526020018280546107b9906119c2565b80156108065780601f106107db57610100808354040283529160200191610806565b820191906000526020600020905b8154815290600101906020018083116107e957829003601f168201915b5050505050908060020154908060030154908060040154908060050154908060060160009054906101000a900460ff1690806007018054610846906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610872906119c2565b80156108bf5780601f10610894576101008083540402835291602001916108bf565b820191906000526020600020905b8154815290600101906020018083116108a257829003601f168201915b5050505050905088565b600082815260026020908152604080832080548251818502810185019093528083528493849084015b82821015610b16578382906000526020600020906008020160405180610100016040529081600082018054610926906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610952906119c2565b801561099f5780601f106109745761010080835404028352916020019161099f565b820191906000526020600020905b81548152906001019060200180831161098257829003601f168201915b505050505081526020016001820180546109b8906119c2565b80601f01602080910402602001604051908101604052809291908181526020018280546109e4906119c2565b8015610a315780601f10610a0657610100808354040283529160200191610a31565b820191906000526020600020905b815481529060010190602001808311610a1457829003601f168201915b505050918352505060028201546020820152600382015460408201526004820154606082015260058201546080820152600682015460ff16151560a082015260078201805460c090920191610a85906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610ab1906119c2565b8015610afe5780601f10610ad357610100808354040283529160200191610afe565b820191906000526020600020905b815481529060010190602001808311610ae157829003601f168201915b505050505081525050815260200190600101906108f2565b50505050905060005b8151811015610bb35783604051602001610b3991906119fc565b60405160208183030381529060405280519060200120828281518110610b6157610b6161197d565b602002602001015160200151604051602001610b7d91906119fc565b6040516020818303038152906040528051906020012003610ba1579150610bf49050565b80610bab81611a2e565b915050610b1f565b5060405162461bcd60e51b815260206004820152601560248201527414995dd85c99081d1e5c19481b9bdd08199bdd5b99605a1b604482015260640161034b565b92915050565b60008411610c1a5760405162461bcd60e51b815260040161034b90611a47565b833411610c395760405162461bcd60e51b815260040161034b90611a8e565b604080516320d8a38160e11b815260048101879052602481019190915260066044820152650417474656d760d41b6064820152600090819030906341b1470290608401602060405180830381865afa925050508015610cb5575060408051601f3d908101601f19168201909252610cb291810190611add565b60015b610cc157506000610cc8565b9150600190505b8015610d355760405162461bcd60e51b815260206004820152603660248201527f526577617264206f6620747970652027417474656d702720616c72656164792060448201527565786973747320666f72207468697320636f7572736560501b606482015260840161034b565b60008781526002602090815260408083208151610100810183528781528251808401845260068152650417474656d760d41b81860152818501523492810192909252606082018a90526080820184905260a08201899052600160c0830181905260e0830189905281549081018255908452919092208251600890920201908190610dbf9082611b45565b5060208201516001820190610dd49082611b45565b5060408201516002820155606082015160038201556080820151600482015560a0820151600582015560c082015160068201805460ff191691151591909117905560e08201516007820190610e299082611b45565b50506003546001546040516323ca752560e21b81526001600160a01b039092169250638f29d494913491610e639160040190815260200190565b6000604051808303818588803b158015610e7c57600080fd5b505af1158015610e90573d6000803e3d6000fd5b5050600180549350915060009050610ea783611a2e565b909155505060408051888152602081018890527f88fc65a4ed788285aa908360b9c3d9d49ca6b671486b7a9c0bca6425e952d8c1910160405180910390a150505050505050565b60008411610f0e5760405162461bcd60e51b815260040161034b90611a47565b833411610f2d5760405162461bcd60e51b815260040161034b90611a8e565b6040516320d8a38160e11b8152600090819030906341b1470290610f75908a906004019081526040602082018190526004908201526354696d6560e01b606082015260800190565b602060405180830381865afa925050508015610fae575060408051601f3d908101601f19168201909252610fab91810190611add565b60015b610fba57506000610fc1565b9150600190505b801561102c5760405162461bcd60e51b815260206004820152603460248201527f526577617264206f662074797065202754696d652720616c72656164792065786044820152736973747320666f72207468697320636f7572736560601b606482015260840161034b565b600087815260026020908152604080832081516101008101835287815282518084018452600481526354696d6560e01b81860152818501523492810192909252606082018a90526080820189905260a08201849052600160c0830181905260e0830189905281549081018255908452919092208251600890920201908190610dbf9082611b45565b60008281526002602052604081205482106111115760405162461bcd60e51b815260206004820152601a60248201527f52657761726420696e646578206f7574206f6620626f756e6473000000000000604482015260640161034b565b60008381526002602052604090208054839081106111315761113161197d565b906000526020600020906008020160030154905092915050565b6000611173846040518060400160405280600481526020016354696d6560e01b8152506108c9565b600085815260026020526040812080549293509091839081106111985761119861197d565b60009182526020909120600890910201600681015490915060ff166111cf5760405162461bcd60e51b815260040161034b90611993565b806004015483106112345760405162461bcd60e51b815260206004820152602960248201527f436f6d706c6574696f6e2074696d6520657863656564732072657761726420746044820152681a5b59481b1a5b5a5d60ba1b606482015260840161034b565b6003805490820154604051634e837e4d60e11b81526001600160a01b038781166004830152602482019290925260448101859052911690639d06fc9a90606401600060405180830381600087803b15801561128e57600080fd5b505af11580156112a2573d6000803e3d6000fd5b505050506003810154604080518781526001600160a01b038716602082015280820192909252517f24b5efa61dd1cfc659205a97fb8ed868f3cb8c81922bab2b96423e5de1de2cb79181900360600190a15050505050565b60008281526002602052604090205481106113575760405162461bcd60e51b815260206004820152601a60248201527f52657761726420696e646578206f7574206f6620626f756e6473000000000000604482015260640161034b565b60008281526002602052604081208054839081106113775761137761197d565b60009182526020909120600890910201600681015490915060ff166113ae5760405162461bcd60e51b815260040161034b90611993565b600083815260026020526040902080546113ca90600190611c05565b815481106113da576113da61197d565b906000526020600020906008020160026000858152602001908152602001600020838154811061140c5761140c61197d565b60009182526020909120600890910201806114278382611c18565b5060018181019061143a90840182611c18565b5060028281015490820155600380830154908201556004808301549082015560058083015490820155600680830154908201805460ff191660ff909216151591909117905560078082019061149190840182611c18565b50505060008381526002602052604090208054806114b1576114b1611cf3565b600082815260208120600019909201916008830201906114d18282611559565b6114df600183016000611559565b60006002830181905560038301819055600483018190556005830181905560068301805460ff19169055611517906007840190611559565b5050905560408051848152602081018490527fd051ce7d8f6c1361b94cc087864b4db603eb58c84d944d7778db0548b0792517910160405180910390a1505050565b508054611565906119c2565b6000825580601f10611575575050565b601f0160209004906000526020600020908101906115939190611596565b50565b5b808211156115ab5760008155600101611597565b5090565b80356001600160a01b03811681146115c657600080fd5b919050565b600080604083850312156115de57600080fd5b6115e7836115af565b946020939093013593505050565b60006020828403121561160757600080fd5b5035919050565b60005b83811015611629578181015183820152602001611611565b50506000910152565b6000815180845261164a81602086016020860161160e565b601f01601f19169290920160200192915050565b60006020808301818452808551808352604092508286019150828160051b87010184880160005b8381101561172857603f19898403018552815161010081518186526116ac82870182611632565b915050888201518582038a8701526116c48282611632565b838a0151878b0152606080850151908801526080808501519088015260a0808501519088015260c08085015115159088015260e09384015187820394880194909452915061171490508183611632565b968901969450505090860190600101611685565b509098975050505050505050565b6000806040838503121561174957600080fd5b50508035926020909101359150565b600061010080835261176c8184018c611632565b90508281036020840152611780818b611632565b90508860408401528760608401528660808401528560a084015284151560c084015282810360e08401526117b48185611632565b9b9a5050505050505050505050565b634e487b7160e01b600052604160045260246000fd5b600082601f8301126117ea57600080fd5b813567ffffffffffffffff80821115611805576118056117c3565b604051601f8301601f19908116603f0116810190828211818310171561182d5761182d6117c3565b8160405283815286602085880101111561184657600080fd5b836020870160208301376000602085830101528094505050505092915050565b6000806040838503121561187957600080fd5b82359150602083013567ffffffffffffffff81111561189757600080fd5b6118a3858286016117d9565b9150509250929050565b6020815260006118c06020830184611632565b9392505050565b600080600080600060a086880312156118df57600080fd5b853594506020860135935060408601359250606086013567ffffffffffffffff8082111561190c57600080fd5b61191889838a016117d9565b9350608088013591508082111561192e57600080fd5b5061193b888289016117d9565b9150509295509295909350565b60008060006060848603121561195d57600080fd5b8335925061196d602085016115af565b9150604084013590509250925092565b634e487b7160e01b600052603260045260246000fd5b60208082526015908201527414995dd85c9908191bd95cc81b9bdd08195e1a5cdd605a1b604082015260600190565b600181811c908216806119d657607f821691505b6020821081036119f657634e487b7160e01b600052602260045260246000fd5b50919050565b60008251611a0e81846020870161160e565b9190910192915050565b634e487b7160e01b600052601160045260246000fd5b600060018201611a4057611a40611a18565b5060010190565b60208082526027908201527f52657761726420616d6f756e74206d7573742062652067726561746572207468604082015266616e207a65726f60c81b606082015260800190565b6020808252602f908201527f546f74616c2072657761726420616d6f756e74206d757374206265206772656160408201526e1d195c881d1a185b88185b5bdd5b9d608a1b606082015260800190565b600060208284031215611aef57600080fd5b5051919050565b601f821115611b4057600081815260208120601f850160051c81016020861015611b1d5750805b601f850160051c820191505b81811015611b3c57828155600101611b29565b5050505b505050565b815167ffffffffffffffff811115611b5f57611b5f6117c3565b611b7381611b6d84546119c2565b84611af6565b602080601f831160018114611ba85760008415611b905750858301515b600019600386901b1c1916600185901b178555611b3c565b600085815260208120601f198616915b82811015611bd757888601518255948401946001909101908401611bb8565b5085821015611bf55787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b81810381811115610bf457610bf4611a18565b818103611c23575050565b611c2d82546119c2565b67ffffffffffffffff811115611c4557611c456117c3565b611c5381611b6d84546119c2565b6000601f821160018114611c875760008315611c6f5750848201545b600019600385901b1c1916600184901b178455611cec565b600085815260209020601f19841690600086815260209020845b83811015611cc15782860154825560019586019590910190602001611ca1565b5085831015611cdf5781850154600019600388901b60f8161c191681555b50505060018360011b0184555b5050505050565b634e487b7160e01b600052603160045260246000fdfea26469706673582212203e8e96cea4748a853310fce28432bb791427885e58e601919c76dcf33c90fe3064736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106100c25760003560e01c80638da5cb5b1161007f578063a286e04f11610059578063a286e04f14610254578063bb72f14614610267578063c572429e14610287578063ebf5ce70146102a757600080fd5b80638da5cb5b146101cb57806392563939146101eb5780639fa1342f1461024157600080fd5b806322828cc2146100c757806336d2c241146101045780633bae1447146101265780633e7e366e1461015357806341b147021461018757806379085425146101b5575b600080fd5b3480156100d357600080fd5b506003546100e7906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561011057600080fd5b5061012461011f3660046115cb565b6102c7565b005b34801561013257600080fd5b506101466101413660046115f5565b61045b565b6040516100fb919061165e565b34801561015f57600080fd5b5061017361016e366004611736565b6106bf565b6040516100fb989796959493929190611758565b34801561019357600080fd5b506101a76101a2366004611866565b6108c9565b6040519081526020016100fb565b3480156101c157600080fd5b506101a760015481565b3480156101d757600080fd5b506000546100e7906001600160a01b031681565b3480156101f757600080fd5b506102346040518060400160405280601881526020017f526577617264204d616e6167657220436f6e747261637421000000000000000081525081565b6040516100fb91906118ad565b61012461024f3660046118c7565b610bfa565b6101246102623660046118c7565b610eee565b34801561027357600080fd5b506101a7610282366004611736565b6110b4565b34801561029357600080fd5b506101246102a2366004611948565b61114b565b3480156102b357600080fd5b506101246102c2366004611736565b6112fa565b60006102ef826040518060400160405280600481526020016354696d6560e01b8152506108c9565b600083815260026020526040812080549293509091839081106103145761031461197d565b60009182526020909120600890910201600681015490915060ff166103545760405162461bcd60e51b815260040161034b90611993565b60405180910390fd5b60008160030154116103a15760405162461bcd60e51b81526020600482015260166024820152752737903932bbb0b932103a37903bb4ba34323930bb9760511b604482015260640161034b565b600354604051636f15f23b60e11b81526001600160a01b038681166004830152602482018590529091169063de2be47690604401600060405180830381600087803b1580156103ef57600080fd5b505af1158015610403573d6000803e3d6000fd5b5050505060068101805460ff19169055604080516001600160a01b0386168152602081018490527f1d3eee4ca001cff39eec6ec7615aacf2f2bd61791273830728ba00ccbd6e1337910160405180910390a150505050565b606060026000838152602001908152602001600020805480602002602001604051908101604052809291908181526020016000905b828210156106b45783829060005260206000209060080201604051806101000160405290816000820180546104c4906119c2565b80601f01602080910402602001604051908101604052809291908181526020018280546104f0906119c2565b801561053d5780601f106105125761010080835404028352916020019161053d565b820191906000526020600020905b81548152906001019060200180831161052057829003601f168201915b50505050508152602001600182018054610556906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610582906119c2565b80156105cf5780601f106105a4576101008083540402835291602001916105cf565b820191906000526020600020905b8154815290600101906020018083116105b257829003601f168201915b505050918352505060028201546020820152600382015460408201526004820154606082015260058201546080820152600682015460ff16151560a082015260078201805460c090920191610623906119c2565b80601f016020809104026020016040519081016040528092919081815260200182805461064f906119c2565b801561069c5780601f106106715761010080835404028352916020019161069c565b820191906000526020600020905b81548152906001019060200180831161067f57829003601f168201915b50505050508152505081526020019060010190610490565b505050509050919050565b600260205281600052604060002081815481106106db57600080fd5b9060005260206000209060080201600091509150508060000180546106ff906119c2565b80601f016020809104026020016040519081016040528092919081815260200182805461072b906119c2565b80156107785780601f1061074d57610100808354040283529160200191610778565b820191906000526020600020905b81548152906001019060200180831161075b57829003601f168201915b50505050509080600101805461078d906119c2565b80601f01602080910402602001604051908101604052809291908181526020018280546107b9906119c2565b80156108065780601f106107db57610100808354040283529160200191610806565b820191906000526020600020905b8154815290600101906020018083116107e957829003601f168201915b5050505050908060020154908060030154908060040154908060050154908060060160009054906101000a900460ff1690806007018054610846906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610872906119c2565b80156108bf5780601f10610894576101008083540402835291602001916108bf565b820191906000526020600020905b8154815290600101906020018083116108a257829003601f168201915b5050505050905088565b600082815260026020908152604080832080548251818502810185019093528083528493849084015b82821015610b16578382906000526020600020906008020160405180610100016040529081600082018054610926906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610952906119c2565b801561099f5780601f106109745761010080835404028352916020019161099f565b820191906000526020600020905b81548152906001019060200180831161098257829003601f168201915b505050505081526020016001820180546109b8906119c2565b80601f01602080910402602001604051908101604052809291908181526020018280546109e4906119c2565b8015610a315780601f10610a0657610100808354040283529160200191610a31565b820191906000526020600020905b815481529060010190602001808311610a1457829003601f168201915b505050918352505060028201546020820152600382015460408201526004820154606082015260058201546080820152600682015460ff16151560a082015260078201805460c090920191610a85906119c2565b80601f0160208091040260200160405190810160405280929190818152602001828054610ab1906119c2565b8015610afe5780601f10610ad357610100808354040283529160200191610afe565b820191906000526020600020905b815481529060010190602001808311610ae157829003601f168201915b505050505081525050815260200190600101906108f2565b50505050905060005b8151811015610bb35783604051602001610b3991906119fc565b60405160208183030381529060405280519060200120828281518110610b6157610b6161197d565b602002602001015160200151604051602001610b7d91906119fc565b6040516020818303038152906040528051906020012003610ba1579150610bf49050565b80610bab81611a2e565b915050610b1f565b5060405162461bcd60e51b815260206004820152601560248201527414995dd85c99081d1e5c19481b9bdd08199bdd5b99605a1b604482015260640161034b565b92915050565b60008411610c1a5760405162461bcd60e51b815260040161034b90611a47565b833411610c395760405162461bcd60e51b815260040161034b90611a8e565b604080516320d8a38160e11b815260048101879052602481019190915260066044820152650417474656d760d41b6064820152600090819030906341b1470290608401602060405180830381865afa925050508015610cb5575060408051601f3d908101601f19168201909252610cb291810190611add565b60015b610cc157506000610cc8565b9150600190505b8015610d355760405162461bcd60e51b815260206004820152603660248201527f526577617264206f6620747970652027417474656d702720616c72656164792060448201527565786973747320666f72207468697320636f7572736560501b606482015260840161034b565b60008781526002602090815260408083208151610100810183528781528251808401845260068152650417474656d760d41b81860152818501523492810192909252606082018a90526080820184905260a08201899052600160c0830181905260e0830189905281549081018255908452919092208251600890920201908190610dbf9082611b45565b5060208201516001820190610dd49082611b45565b5060408201516002820155606082015160038201556080820151600482015560a0820151600582015560c082015160068201805460ff191691151591909117905560e08201516007820190610e299082611b45565b50506003546001546040516323ca752560e21b81526001600160a01b039092169250638f29d494913491610e639160040190815260200190565b6000604051808303818588803b158015610e7c57600080fd5b505af1158015610e90573d6000803e3d6000fd5b5050600180549350915060009050610ea783611a2e565b909155505060408051888152602081018890527f88fc65a4ed788285aa908360b9c3d9d49ca6b671486b7a9c0bca6425e952d8c1910160405180910390a150505050505050565b60008411610f0e5760405162461bcd60e51b815260040161034b90611a47565b833411610f2d5760405162461bcd60e51b815260040161034b90611a8e565b6040516320d8a38160e11b8152600090819030906341b1470290610f75908a906004019081526040602082018190526004908201526354696d6560e01b606082015260800190565b602060405180830381865afa925050508015610fae575060408051601f3d908101601f19168201909252610fab91810190611add565b60015b610fba57506000610fc1565b9150600190505b801561102c5760405162461bcd60e51b815260206004820152603460248201527f526577617264206f662074797065202754696d652720616c72656164792065786044820152736973747320666f72207468697320636f7572736560601b606482015260840161034b565b600087815260026020908152604080832081516101008101835287815282518084018452600481526354696d6560e01b81860152818501523492810192909252606082018a90526080820189905260a08201849052600160c0830181905260e0830189905281549081018255908452919092208251600890920201908190610dbf9082611b45565b60008281526002602052604081205482106111115760405162461bcd60e51b815260206004820152601a60248201527f52657761726420696e646578206f7574206f6620626f756e6473000000000000604482015260640161034b565b60008381526002602052604090208054839081106111315761113161197d565b906000526020600020906008020160030154905092915050565b6000611173846040518060400160405280600481526020016354696d6560e01b8152506108c9565b600085815260026020526040812080549293509091839081106111985761119861197d565b60009182526020909120600890910201600681015490915060ff166111cf5760405162461bcd60e51b815260040161034b90611993565b806004015483106112345760405162461bcd60e51b815260206004820152602960248201527f436f6d706c6574696f6e2074696d6520657863656564732072657761726420746044820152681a5b59481b1a5b5a5d60ba1b606482015260840161034b565b6003805490820154604051634e837e4d60e11b81526001600160a01b038781166004830152602482019290925260448101859052911690639d06fc9a90606401600060405180830381600087803b15801561128e57600080fd5b505af11580156112a2573d6000803e3d6000fd5b505050506003810154604080518781526001600160a01b038716602082015280820192909252517f24b5efa61dd1cfc659205a97fb8ed868f3cb8c81922bab2b96423e5de1de2cb79181900360600190a15050505050565b60008281526002602052604090205481106113575760405162461bcd60e51b815260206004820152601a60248201527f52657761726420696e646578206f7574206f6620626f756e6473000000000000604482015260640161034b565b60008281526002602052604081208054839081106113775761137761197d565b60009182526020909120600890910201600681015490915060ff166113ae5760405162461bcd60e51b815260040161034b90611993565b600083815260026020526040902080546113ca90600190611c05565b815481106113da576113da61197d565b906000526020600020906008020160026000858152602001908152602001600020838154811061140c5761140c61197d565b60009182526020909120600890910201806114278382611c18565b5060018181019061143a90840182611c18565b5060028281015490820155600380830154908201556004808301549082015560058083015490820155600680830154908201805460ff191660ff909216151591909117905560078082019061149190840182611c18565b50505060008381526002602052604090208054806114b1576114b1611cf3565b600082815260208120600019909201916008830201906114d18282611559565b6114df600183016000611559565b60006002830181905560038301819055600483018190556005830181905560068301805460ff19169055611517906007840190611559565b5050905560408051848152602081018490527fd051ce7d8f6c1361b94cc087864b4db603eb58c84d944d7778db0548b0792517910160405180910390a1505050565b508054611565906119c2565b6000825580601f10611575575050565b601f0160209004906000526020600020908101906115939190611596565b50565b5b808211156115ab5760008155600101611597565b5090565b80356001600160a01b03811681146115c657600080fd5b919050565b600080604083850312156115de57600080fd5b6115e7836115af565b946020939093013593505050565b60006020828403121561160757600080fd5b5035919050565b60005b83811015611629578181015183820152602001611611565b50506000910152565b6000815180845261164a81602086016020860161160e565b601f01601f19169290920160200192915050565b60006020808301818452808551808352604092508286019150828160051b87010184880160005b8381101561172857603f19898403018552815161010081518186526116ac82870182611632565b915050888201518582038a8701526116c48282611632565b838a0151878b0152606080850151908801526080808501519088015260a0808501519088015260c08085015115159088015260e09384015187820394880194909452915061171490508183611632565b968901969450505090860190600101611685565b509098975050505050505050565b6000806040838503121561174957600080fd5b50508035926020909101359150565b600061010080835261176c8184018c611632565b90508281036020840152611780818b611632565b90508860408401528760608401528660808401528560a084015284151560c084015282810360e08401526117b48185611632565b9b9a5050505050505050505050565b634e487b7160e01b600052604160045260246000fd5b600082601f8301126117ea57600080fd5b813567ffffffffffffffff80821115611805576118056117c3565b604051601f8301601f19908116603f0116810190828211818310171561182d5761182d6117c3565b8160405283815286602085880101111561184657600080fd5b836020870160208301376000602085830101528094505050505092915050565b6000806040838503121561187957600080fd5b82359150602083013567ffffffffffffffff81111561189757600080fd5b6118a3858286016117d9565b9150509250929050565b6020815260006118c06020830184611632565b9392505050565b600080600080600060a086880312156118df57600080fd5b853594506020860135935060408601359250606086013567ffffffffffffffff8082111561190c57600080fd5b61191889838a016117d9565b9350608088013591508082111561192e57600080fd5b5061193b888289016117d9565b9150509295509295909350565b60008060006060848603121561195d57600080fd5b8335925061196d602085016115af565b9150604084013590509250925092565b634e487b7160e01b600052603260045260246000fd5b60208082526015908201527414995dd85c9908191bd95cc81b9bdd08195e1a5cdd605a1b604082015260600190565b600181811c908216806119d657607f821691505b6020821081036119f657634e487b7160e01b600052602260045260246000fd5b50919050565b60008251611a0e81846020870161160e565b9190910192915050565b634e487b7160e01b600052601160045260246000fd5b600060018201611a4057611a40611a18565b5060010190565b60208082526027908201527f52657761726420616d6f756e74206d7573742062652067726561746572207468604082015266616e207a65726f60c81b606082015260800190565b6020808252602f908201527f546f74616c2072657761726420616d6f756e74206d757374206265206772656160408201526e1d195c881d1a185b88185b5bdd5b9d608a1b606082015260800190565b600060208284031215611aef57600080fd5b5051919050565b601f821115611b4057600081815260208120601f850160051c81016020861015611b1d5750805b601f850160051c820191505b81811015611b3c57828155600101611b29565b5050505b505050565b815167ffffffffffffffff811115611b5f57611b5f6117c3565b611b7381611b6d84546119c2565b84611af6565b602080601f831160018114611ba85760008415611b905750858301515b600019600386901b1c1916600185901b178555611b3c565b600085815260208120601f198616915b82811015611bd757888601518255948401946001909101908401611bb8565b5085821015611bf55787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b81810381811115610bf457610bf4611a18565b818103611c23575050565b611c2d82546119c2565b67ffffffffffffffff811115611c4557611c456117c3565b611c5381611b6d84546119c2565b6000601f821160018114611c875760008315611c6f5750848201545b600019600385901b1c1916600184901b178455611cec565b600085815260209020601f19841690600086815260209020845b83811015611cc15782860154825560019586019590910190602001611ca1565b5085831015611cdf5781850154600019600388901b60f8161c191681555b50505060018360011b0184555b5050505050565b634e487b7160e01b600052603160045260246000fdfea26469706673582212203e8e96cea4748a853310fce28432bb791427885e58e601919c76dcf33c90fe3064736f6c63430008140033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2322,
+        "contract": "contracts/RewardManager.sol:RewardManager",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 2324,
+        "contract": "contracts/RewardManager.sol:RewardManager",
+        "label": "rewardCount",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 2330,
+        "contract": "contracts/RewardManager.sol:RewardManager",
+        "label": "rewards",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_array(t_struct(Reward)2317_storage)dyn_storage)"
+      },
+      {
+        "astId": 2333,
+        "contract": "contracts/RewardManager.sol:RewardManager",
+        "label": "stakingManager",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_contract(StakingManager)3377"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(Reward)2317_storage)dyn_storage": {
+        "base": "t_struct(Reward)2317_storage",
+        "encoding": "dynamic_array",
+        "label": "struct RewardManager.Reward[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_contract(StakingManager)3377": {
+        "encoding": "inplace",
+        "label": "contract StakingManager",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_uint256,t_array(t_struct(Reward)2317_storage)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct RewardManager.Reward[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_struct(Reward)2317_storage)dyn_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Reward)2317_storage": {
+        "encoding": "inplace",
+        "label": "struct RewardManager.Reward",
+        "members": [
+          {
+            "astId": 2302,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "description",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2304,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "rewardType",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 2306,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "totalAmount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2308,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "amount",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2310,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "timeLimit",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2312,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "attemp",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 2314,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "exists",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_bool"
+          },
+          {
+            "astId": 2316,
+            "contract": "contracts/RewardManager.sol:RewardManager",
+            "label": "provider",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_string_storage"
+          }
+        ],
+        "numberOfBytes": "256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

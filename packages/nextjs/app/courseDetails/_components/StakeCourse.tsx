@@ -55,9 +55,9 @@ const StakeCourse: React.FC<CourseCompletedProps> = ({ courseId }) => {
         <div className="flex flex-col bg-base-100 dark:bg-gray-800 rounded-3xl shadow-md border border-base-300 dark:border-gray-700 relative p-6">
           <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100 overflow-hidden">Description</h3>
           <p>
-            This online Solidity course is designed to take you from beginner to advanced in smart contract development
-            on the Ethereum blockchain. Whether you are new to programming or already have coding experience, you will
-            learn how to build decentralized applications (dApps) using Solidity,
+            This online course is designed to take you from beginner to advanced in smart contract development on the
+            Ethereum blockchain. Whether you are new to programming or already have coding experience, you will learn
+            how to build decentralized applications (dApps) using Solidity,
           </p>
         </div>
 
