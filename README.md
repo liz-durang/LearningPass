@@ -7,7 +7,7 @@
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/LearningPass.jpg">
   </a>
 
-<br />
+<br/><br/><br/>
 <p align="center">
   <a href="https://dorahacks.io/hackathon/441/detail">Hackathon Women Web3 by Cripto Conexión</a>
 </p>
