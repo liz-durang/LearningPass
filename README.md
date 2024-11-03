@@ -2,9 +2,6 @@
 
 <a name="readme-top"></a>
 
-
-🗒️ A blockchain learning platform that boosts student engagement and rewards their efforts, democratizing education and decentralizing knowledge 
-
 <div align="center">
   <a href="https://github.com/liz-durang/LearningPass">
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/LearningPass.jpg">
@@ -13,15 +10,9 @@
 
   <p align="center">
 
-  [Hackathon Women Web3]([https://ethglobal.com/events/london2024/](https://dorahacks.io/hackathon/441/detail))
+  [Hackathon Women Web3 by Cripto Conexión]([https://ethglobal.com/events/london2024/](https://dorahacks.io/hackathon/441/detail))
 
    <br />
-    <a href="[https://github.com/EthPocketHQ/Pocket](https://www.canva.com/design/DAGVXEOJ04k/7rsqLpVYTujeQXPW5HqSVg/edit?utm_content=DAGVXEOJ04k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)"><strong>Presentation»</strong></a>
-    <br />
-    <a href="https://github.com/liz-durang/LearningPass">View Demo</a>
-  </p>
-</div>
-
 ## Quickstart
 
 To get started with Scaffold-ETH 2, follow the steps below:
