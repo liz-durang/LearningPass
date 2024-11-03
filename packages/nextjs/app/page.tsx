@@ -2,69 +2,48 @@
 
 import Link from "next/link";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
+import { AcademicCapIcon, BugAntIcon, GlobeAltIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-
   return (
     <>
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} />
+      {/* Hero Section */}
+      <section
+        className="w-full h-[50vh] md:h-[50vh] lg:h-[100vh] mt-[-5%] bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/LearningPass2.png')" }}
+      >
+        {/* Contenido opcional aquí */}
+      </section>
+
+      {/* Beneficios */}
+      <section className="flex-grow bg-white w-full px-8 py-12 text-center">
+        <h2 className="text-2xl font-bold mb-6 ">Why choose LearningPass?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-col bg-gray-50 p-6 text-center items-center rounded-lg shadow-md border border-accent text-gray-700 relative">
+            <AcademicCapIcon className="h-8 w-8 text-primary absolute top-4 left-4" />
+            <h3 className="font-bold text-lg mt-8">Continuous Motivation</h3>
+            <p>With refundable enrollment and milestone rewards, we encourage ongoing learning and development</p>
           </div>
-
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
-        </div>
-
-        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
+          <div className="flex flex-col bg-gray-50 p-6 text-center items-center rounded-lg shadow-md border border-accent text-gray-700 relative">
+            <GlobeAltIcon className="h-8 w-8 text-primary absolute top-4 left-4" />
+            <h3 className="font-bold text-lg mt-8">Skills Validation</h3>
+            <p>On-chain NFTs validate your skills, authenticated by the original creators of the content.</p>
+          </div>
+          <div className="flex flex-col bg-gray-50 p-6 text-center items-center rounded-lg shadow-md border border-accent text-gray-700 relative">
+            <BugAntIcon className="h-8 w-8 text-primary absolute top-4 left-4" />
+            <h3 className="font-bold text-lg mt-8">On-Chain Transparency</h3>
+            <p>Achievements recorded on the blockchain ensure reliable educational traceability </p>
+          </div>
+          <div className="flex flex-col bg-gray-50 p-6 text-center items-center rounded-lg shadow-md border border-accent text-gray-700 relative">
+            <MagnifyingGlassIcon className="h-8 w-8 text-primary absolute top-4 left-4" />
+            <h3 className="font-bold text-lg mt-8">Job Opportunities</h3>
+            <p>A verifiable track record that enhances your professional profile in the Web3 ecosystem </p>
           </div>
         </div>
-      </div>
+        <Link href="/dashboard">
+          <button className="bg-primary text-white font-bold py-3 px-6 rounded-lg mt-10">Get Started</button>
+        </Link>
+      </section>
     </>
   );
 };

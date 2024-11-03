@@ -1,5 +1,7 @@
-// Evaluation.tsx
 import React, { useEffect, useState } from "react";
+import mintERC721 from "../../../services/vottun/mintERC721";
+import uploadIPFS from "../../../services/vottun/uploadIPFS";
+import uploadIPFSMetadata from "../../../services/vottun/uploadIPFSMetadata";
 import { useAccount } from "wagmi";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
@@ -11,6 +13,8 @@ const Evaluation: React.FC<EvaluationProps> = ({ courseId }) => {
   const [mappedQuestions, setMappedQuestions] = useState<any[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: number | null }>({});
   const [evaluationCompleted, setEvaluationCompleted] = useState<boolean | null>(null);
+  const [ipfsUriImage, setIpfsUriImage] = useState<string>("");
+  const [ipfsUriMetadata, setIpfsUriMetadata] = useState<string>("");
 
   const { address: connectedAddress } = useAccount();
   const { writeContractAsync: writeQuestionManagerAsync } = useScaffoldWriteContract("QuestionManager");
@@ -110,7 +114,11 @@ const Evaluation: React.FC<EvaluationProps> = ({ courseId }) => {
     }
 
     setEvaluationCompleted(allCorrect);
-    await finishEvaluation();
+
+    if (allCorrect) {
+      await finishEvaluation();
+      await mintNFT();
+    }
   };
 
   const finishEvaluation = async () => {
@@ -125,6 +133,45 @@ const Evaluation: React.FC<EvaluationProps> = ({ courseId }) => {
       } catch (e) {
         console.error("Error", e);
       }
+    }
+  };
+
+  const mintNFT = async () => {
+    try {
+      const IPFSData = {
+        filename: courseDetails[0]?.toString(),
+        file: "../../../public/images/vottun101.webp",
+      };
+
+      const erc721Data = {
+        name: courseDetails[0]?.toString(),
+        image: ipfsUriMetadata,
+        description: courseDetails[1]?.toString(),
+      };
+
+      const IPFSMetaData = {
+        recipientAddress: connectedAddress,
+        tokenId: 1,
+        ipfsUri: ipfsUriImage,
+        ipfsHash: "hashIPFS",
+        network: 421614,
+        contractAddress: "0x69DB11B50e70d1162c6953f60741cb57DD79fe3A",
+        royaltyPercentage: 10,
+        gasLimit: 3000000,
+      };
+
+      const imageResult = await uploadIPFS(IPFSData);
+      setIpfsUriImage(imageResult);
+      console.log("Image updated successfully:", imageResult);
+
+      const metadataResult = await uploadIPFSMetadata(IPFSMetaData);
+      setIpfsUriMetadata(metadataResult);
+      console.log("Metadata updated successfully:", metadataResult);
+
+      const mintResult = await mintERC721(erc721Data);
+      console.log("ERC721 deployed successfully:", mintResult);
+    } catch (error) {
+      console.error("Error en mintNFT:", error);
     }
   };
 

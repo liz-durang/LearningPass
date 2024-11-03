@@ -28,10 +28,10 @@ export const SearchSection = () => {
             {menuSearch.map(item => (
               <button
                 style={{ backgroundColor: item.label === selectedOption ? "#004aad" : "" }}
-                className={`text-white btn btn-sm font-light rounded-[8px] ${
+                className={` btn btn-sm font-light rounded-[8px] ${
                   item.label === selectedOption
-                    ? "bg-[#004aad]  hover:bg-base-400 no-animation hover:text-white"
-                    : "text-gray-700 bg-base-100 hover:bg-[#004aad] hover:text-white dark:text-white"
+                    ? "bg-[#004aad]  hover:bg-base-400 no-animation hover:text-white text-white"
+                    : "text-black bg-base-100 hover:bg-[#004aad] hover:text-white dark:text-white"
                 }`}
                 key={item.label}
                 onClick={() => setSelectedOption(item.label)}

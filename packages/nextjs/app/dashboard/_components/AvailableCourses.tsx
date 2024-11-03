@@ -55,7 +55,7 @@ export const AvailableCourses = () => {
                 </span>
 
                 <Image
-                  src="/logo.svg"
+                  src="/images/vottun101.webp"
                   alt={`${course.name} logo`}
                   width={48}
                   height={48}

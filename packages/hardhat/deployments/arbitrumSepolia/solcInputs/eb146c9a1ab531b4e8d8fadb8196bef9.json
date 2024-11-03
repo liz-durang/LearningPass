@@ -1,0 +1,36 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/MyLearningNFT.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\ncontract MyLearningNFT {\n    // Eventos estándar de ERC721\n    event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);\n    event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);\n\n    // Mappings para almacenar la propiedad y las aprobaciones\n    mapping(uint256 => address) private _owners;\n    mapping(address => uint256) private _balances;\n    mapping(uint256 => address) private _tokenApprovals;\n\n    // Nombre y símbolo del token\n    string public name;\n    string public symbol;\n\n    string public constant contractTag = \"MyLearningNFT Contract!\";\n\n    // Contador para el ID de token\n    uint256 private _tokenIdCounter;\n\n    constructor(string memory _name, string memory _symbol) {\n        name = _name;\n        symbol = _symbol;\n    }\n\n    // Función para consultar el propietario de un token\n    function ownerOf(uint256 tokenId) public view returns (address) {\n        address owner = _owners[tokenId];\n        require(owner != address(0), \"Token no existe\");\n        return owner;\n    }\n\n    // Función para consultar el balance de tokens de un propietario\n    function balanceOf(address owner) public view returns (uint256) {\n        require(owner != address(0), \"Consulta para la direccion cero\");\n        return _balances[owner];\n    }\n\n    // Función para aprobar a otra dirección para transferir un token\n    function approve(address to, uint256 tokenId) public {\n        address owner = ownerOf(tokenId);\n        require(to != owner, \"Aprobacion al propietario actual\");\n        require(msg.sender == owner, \"No tienes permiso para aprobar este token\");\n\n        _tokenApprovals[tokenId] = to;\n        emit Approval(owner, to, tokenId);\n    }\n\n    // Función para transferir un token a otra dirección\n    function transferFrom(address from, address to, uint256 tokenId) public {\n        require(_isApprovedOrOwner(msg.sender, tokenId), \"No tienes permiso para transferir este token\");\n        require(ownerOf(tokenId) == from, \"No es el propietario actual del token\");\n        require(to != address(0), \"Transferencia a la direccion cero\");\n\n        _transfer(from, to, tokenId);\n    }\n\n    // Función para mintear un nuevo token\n    function mint(address to) public {\n        require(to != address(0), \"Direccion cero no permitida\");\n        \n        uint256 tokenId = _tokenIdCounter;\n        _tokenIdCounter += 1;\n\n        _balances[to] += 1;\n        _owners[tokenId] = to;\n\n        emit Transfer(address(0), to, tokenId);\n    }\n\n    // Función para verificar si alguien es propietario o aprobado para un token\n    function _isApprovedOrOwner(address spender, uint256 tokenId) internal view returns (bool) {\n        address owner = ownerOf(tokenId);\n        return (spender == owner || _tokenApprovals[tokenId] == spender);\n    }\n\n    // Función interna para realizar la transferencia de un token\n    function _transfer(address from, address to, uint256 tokenId) internal {\n        _balances[from] -= 1;\n        _balances[to] += 1;\n        _owners[tokenId] = to;\n\n        // Borra la aprobación anterior\n        delete _tokenApprovals[tokenId];\n        emit Transfer(from, to, tokenId);\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

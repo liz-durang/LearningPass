@@ -117,25 +117,25 @@ export const PassportPreview = () => {
 const courses = [
   {
     id: 1,
-    logo: "/logo.svg",
+    logo: "/images/vottun101.webp",
     name: "Curso de Programación en JavaScript",
     description: "NFT Issuer",
   },
   {
     id: 2,
-    logo: "/logo.svg",
+    logo: "/images/vottun101.webp",
     name: "Introducción a React",
     description: "NFT Issuer",
   },
   {
     id: 3,
-    logo: "/logo.svg",
+    logo: "/images/vottun101.webp",
     name: "Desarrollo Web Full Stack Developer xd",
     description: "NFT Issuer",
   },
   {
     id: 4,
-    logo: "/logo.svg",
+    logo: "/images/vottun101.webp",
     name: "Desarrollo Web Full Stack",
     description: "NFT Issuer",
   },
