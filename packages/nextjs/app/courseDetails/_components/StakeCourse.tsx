@@ -62,16 +62,8 @@ const StakeCourse: React.FC<CourseCompletedProps> = ({ courseId }) => {
         </div>
 
         <div className="flex justify-end mt-5">
-          <button
-            className="btn btn-primary btn-sm"
-            onClick={enrollCourse}
-            style={{
-              backgroundColor: "#f2e1f5",
-              border: "1px solid #ac21c2",
-              color: "#ac21c2",
-            }}
-          >
-            Enroll to Evaluation
+          <button className="btn btn-primary btn-sm" onClick={enrollCourse}>
+            Enroll to {courseDetails[5]}
           </button>
         </div>
       </div>

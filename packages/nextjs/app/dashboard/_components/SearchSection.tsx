@@ -27,10 +27,11 @@ export const SearchSection = () => {
           <div className="flex flex-row gap-2 flex-wrap pl-5">
             {menuSearch.map(item => (
               <button
-                className={`btn btn-secondary btn-sm font-light hover:border-transparent rounded-[8px] ${
+                style={{ backgroundColor: item.label === selectedOption ? "#004aad" : "" }}
+                className={`text-white btn btn-sm font-light rounded-[8px] ${
                   item.label === selectedOption
-                    ? "bg-base-300 hover:bg-base-300 no-animation"
-                    : "bg-base-100 hover:bg-secondary"
+                    ? "bg-[#004aad]  hover:bg-base-400 no-animation hover:text-white"
+                    : "text-gray-700 bg-base-100 hover:bg-[#004aad] hover:text-white dark:text-white"
                 }`}
                 key={item.label}
                 onClick={() => setSelectedOption(item.label)}

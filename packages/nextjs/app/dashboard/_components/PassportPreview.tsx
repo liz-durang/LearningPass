@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useAccount } from "wagmi";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { BookOpenIcon, InboxIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const PassportPreview = () => {
@@ -52,24 +52,33 @@ export const PassportPreview = () => {
 
             <div>
               <h2 className="text-lg font-bold">{profilePassport[0]}</h2>
-              <span className="text-sm text-gray-500">@{profilePassport[4]}</span>
+              <span className="text-sm text-gray-400">@{profilePassport[4]}</span>
               <br />
-              <span className="text-sm font-medium text-gray-800">As {rolPassport}</span>
+              <span className="text-sm font-medium text-gray-600 dark:text-white">As {rolPassport}</span>
             </div>
           </div>
 
           <div className="mt-1">
-            <p className="text-sm text-gray-600">{profilePassport[1]}</p>
+            <p className="text-sm text-gray-600 dark:text-white font-medium">{profilePassport[1]}</p>
           </div>
 
           <p className="font-bold">Current Staked Amount</p>
           {totalStake > 0 && totalCourses > 0 ? (
-            <div className="bg-base-300 rounded-3xl px-6 lg:px-8 py-6 shadow-lg" style={{ backgroundColor: "#f2e1f5" }}>
-              <p className="text-center text-2xl font-semibold" style={{ color: "#ac21c2" }}>
-                {totalStake.toString()} ETH
-              </p>
-              <div className="text-center">
-                <span className="text-md font-medium text-center">{totalCourses.toString()} Courses Enrolled</span>
+            <div className="bg-base-300 rounded-3xl px-4 py-4 shadow-lg" style={{ backgroundColor: "#d5f7e8" }}>
+              <div className="flex items-center space-x-2 p-2 mx-auto">
+                <InboxIcon className="w-6 dark:text-black" />
+                <span className="text-xl font-semibold text-center dark:text-black">{totalStake.toString()}</span>
+                <span style={{ color: "#04b267" }} className="text-gl font-semibold text-center dark:text-black">
+                  ETH
+                </span>
+              </div>
+
+              <div className="flex items-center space-x-2 p-2 mx-auto">
+                <BookOpenIcon className="w-6 dark:text-black" />
+                <span className="text-xl font-semibold text-center dark:text-black">{totalCourses.toString()}</span>
+                <span style={{ color: "#04b267" }} className="text-gl font-semibold text-center dark:text-black">
+                  Courses Enrolled
+                </span>
               </div>
             </div>
           ) : (
@@ -81,7 +90,13 @@ export const PassportPreview = () => {
           <ul className="flex flex-wrap gap-4">
             {courses.slice(-4).map(course => (
               <li key={course.id} className="flex items-start p-4 bg-white rounded-lg shadow-md w-full border">
-                <Image src={course.logo} alt={`${course.name} logo`} className="w-12 h-12 mr-4 rounded-lg" />
+                <Image
+                  src={course.logo}
+                  alt={`${course.name} logo`}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 mr-4 rounded-lg"
+                />
                 <div className="flex-grow">
                   <h3 className="text-sm font-medium text-gray-800">{course.name}</h3>
                   <span className="text-sm text-gray-500">{course.description}</span>

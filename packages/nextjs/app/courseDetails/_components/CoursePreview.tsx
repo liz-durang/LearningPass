@@ -70,9 +70,9 @@ export const CoursePreview: React.FC<CoursePreviewProps> = ({ courseId }) => {
           )}
 
           <br />
-          <h3 className="text-lg font-bold">Badge</h3>
+          <h3 className="text-lg font-bold">Your NFT on completion</h3>
           <div className="py-2">
-            <Image src="/logo.svg" alt="" />
+            <Image src="/logo.svg" alt="" width={150} height={150} />
           </div>
         </div>
       ) : (

@@ -54,7 +54,13 @@ export const AvailableCourses = () => {
                   {course.courseType} {/* Asume que `courseType` está en el objeto del curso */}
                 </span>
 
-                <Image src={"/logo.svg"} alt={`${course.name} logo`} className="w-12 h-12 rounded-lg mb-4" />
+                <Image
+                  src="/logo.svg"
+                  alt={`${course.name} logo`}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-lg mb-4"
+                />
                 <h3 className="text-lg font-medium text-gray-800 dark:text-gray-100 mb-2">{course.name}</h3>
                 <span className="text-sm text-gray-500 dark:text-gray-400 text-center mb-4">{course.description}</span>
                 <br />
@@ -62,8 +68,8 @@ export const AvailableCourses = () => {
                   Provided by {course.provider}
                 </span>
                 <div className="flex justify-between items-center mt-3">
-                  <div className="bg-secondary px-2 p-1 rounded-md">
-                    <span className="text-sm text-gray-500 dark:text-gray-400 ">
+                  <div className=" px-2 p-1 rounded-md">
+                    <span className="text-sm text-gray-600 dark:text-gray-400 ">
                       {course.stakingRequirement.toString()} ETH
                     </span>
                   </div>
@@ -75,21 +81,11 @@ export const AvailableCourses = () => {
                         title: course.name,
                         description: course.description,
                         provider: course.provider,
+                        type: course.courseType,
                       },
                     }}
                   >
-                    <button
-                      className="btn btn-sm"
-                      style={{
-                        backgroundColor: "#f2e1f5",
-                        border: "1px solid #ac21c2",
-                        color: "#ac21c2",
-                      }}
-                      onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "#f2e1f5")}
-                      onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.backgroundColor = "white")} // Cambia "white" al color original si es otro
-                    >
-                      Learn More
-                    </button>
+                    <button className="btn btn-sm btn-primary">Learn More</button>
                   </Link>
                 </div>
               </div>

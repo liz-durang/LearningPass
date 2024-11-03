@@ -1,8 +1,8 @@
 /* Cambia el color de las flechas */
 .slick-prev:before,
 .slick-next:before {
-  color: #93BBFB; /* Reemplaza este color con el que prefieras */
-  font-size: 20px; /* Puedes ajustar el tamaño si deseas */
+  color: #004aad; 
+  font-size: 20px;
 }
 
 /* Opcional: personaliza el fondo y bordes de las flechas */

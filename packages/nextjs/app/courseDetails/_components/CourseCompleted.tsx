@@ -54,11 +54,11 @@ const CourseCompleted: React.FC<CourseCompletedProps> = ({ courseId }) => {
 
   const { data: data2 } = useScaffoldReadContract({
     contractName: "CourseManager",
-    functionName: "isEnrolled",
+    functionName: "hasStudentCompletedCourse",
     args: [BigInt(courseId), connectedAddress],
   });
 
-  const isEnrolled = data2;
+  const hasStudentCompletedCourse = data2;
 
   const withdrawCourse = async () => {
     try {
@@ -73,7 +73,7 @@ const CourseCompleted: React.FC<CourseCompletedProps> = ({ courseId }) => {
 
   return (
     <>
-      {isEnrolled && (
+      {hasStudentCompletedCourse && (
         <div className="flex flex-col p-8 bg-blue-100 rounded-lg shadow-md w-full border mb-5 text-center">
           <div className="flex justify-between items-center gap-6 text-center">
             <div className="text-center w-1/2">

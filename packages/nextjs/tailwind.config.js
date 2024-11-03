@@ -9,8 +9,8 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#93BBFB",
-          "primary-content": "#212638",
+          primary: "#004aad",
+          "primary-content": "white",
           secondary: "#DAE8FF",
           "secondary-content": "#212638",
           accent: "#93BBFB",
@@ -20,6 +20,7 @@ module.exports = {
           "base-100": "#ffffff",
           "base-200": "#f4f8ff",
           "base-300": "#DAE8FF",
+          "base-400": "#004aad",
           "base-content": "#212638",
           info: "#93BBFB",
           success: "#34EEB6",

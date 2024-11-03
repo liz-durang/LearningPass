@@ -19,6 +19,7 @@ const CourseDetails: NextPage = () => {
   const title = searchParams.get("title") || "";
   const provider = searchParams.get("provider") || "";
   const description = searchParams.get("description") || "";
+  const type = searchParams.get("type") || "";
 
   const { data: data1 } = useScaffoldReadContract({
     contractName: "CourseManager",
@@ -43,7 +44,8 @@ const CourseDetails: NextPage = () => {
   });
 
   const hasStudentCompletedCourse = data3 || false;
-
+  console.log(hasStudentCompletedCourse);
+  console.log(isEnrolled);
   return (
     <div className="flex flex-col gap-y-6 lg:gap-y-8 py-8 lg:py-12 justify-center items-center">
       <div className="grid grid-cols-1 lg:grid-cols-6 px-6 lg:px-10 lg:gap-12 w-full max-w-7xl my-0">
@@ -57,10 +59,11 @@ const CourseDetails: NextPage = () => {
               provider={provider}
               progress={Number(progress)}
               isEnrolled={isEnrolled}
+              type={type}
             />
 
             {/* Mostrar Evaluation solo si no se ha completado */}
-            {hasStudentCompletedCourse === false && isEnrolled && (
+            {!hasStudentCompletedCourse && isEnrolled && (
               <>
                 <h2 className="my-0 text-xl font-semibold">Evaluation</h2>
                 <Evaluation courseId={id} />
@@ -68,17 +71,17 @@ const CourseDetails: NextPage = () => {
             )}
 
             {/* Mostrar completed solo si se ha completado */}
-            {hasStudentCompletedCourse === true && (
+            {hasStudentCompletedCourse && (
               <>
                 <h2 className="my-0 text-xl font-semibold">Congratulations! You have passed the final evaluation</h2>
                 <CourseCompleted courseId={id} />
               </>
             )}
 
-            {/* Mostrar Evaluation solo si no se ha completado */}
-            {hasStudentCompletedCourse === false && !isEnrolled && (
+            {/* Mostrar enrolarse solo si no se ha completado */}
+            {!hasStudentCompletedCourse && !isEnrolled && (
               <>
-                <h2 className="my-0 text-xl font-semibold">Evaluation</h2>
+                <h2 className="my-0 text-xl font-semibold">Learn more about your course</h2>
                 <StakeCourse courseId={id} />
               </>
             )}

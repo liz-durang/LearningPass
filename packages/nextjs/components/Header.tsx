@@ -50,8 +50,12 @@ export const HeaderMenuLinks = () => {
               href={href}
               passHref
               className={`${
-                isActive ? "bg-secondary shadow-md" : ""
-              } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+                isActive ? "" : ""
+              }  hover:text-[#004aad] active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+              style={{
+                color: isActive ? "#004aad" : "",
+                backgroundColor: isActive ? "transparent" : "inherit",
+              }}
             >
               {icon}
               <span>{label}</span>
@@ -101,7 +105,12 @@ export const Header = () => {
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-28 h-28">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/LearningPass256x256Transparente.png" />
+            <Image
+              alt="SE2 logo"
+              className="cursor-pointer w-28 h-28"
+              fill
+              src="/LearningPass256x256Transparente.png"
+            />
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
