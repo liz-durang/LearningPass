@@ -12,7 +12,7 @@
 
   [Hackathon Women Web3 by Cripto Conexión]([https://ethglobal.com/events/london2024/](https://dorahacks.io/hackathon/441/detail))
 
-   <br />
+  </p>
 ## Quickstart
 
 To get started with Scaffold-ETH 2, follow the steps below:
