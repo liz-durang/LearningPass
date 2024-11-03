@@ -94,10 +94,9 @@ Run smart contract test with `yarn hardhat:test`
 # Built With
 
 Supported by:
-* [![Vottun][https://vottun.com/]]
-* [![Arbitrum][https://arbitrum.io/]]
-* [![Scaffold-ETH 2][https://scaffoldeth.io/]]
-
+* [Vottun](https://vottun.com/)
+* [Arbitrum](https://arbitrum.io/)
+* [Scaffold-ETH 2](https://scaffoldeth.io/)
 
 <!-- CONTACT -->
 
