@@ -8,11 +8,10 @@
   </a>
 
 
-  <p align="center">
+<p align="center">
+  <a href="https://dorahacks.io/hackathon/441/detail">Hackathon Women Web3 by Cripto Conexión</a>
+</p>
 
-  [Hackathon Women Web3 by Cripto Conexión]([https://ethglobal.com/events/london2024/](https://dorahacks.io/hackathon/441/detail))
-
-  </p>
 ## Quickstart
 
 To get started with Scaffold-ETH 2, follow the steps below:
