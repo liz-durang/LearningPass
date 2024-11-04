@@ -7,7 +7,7 @@
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/LearningPass.jpg">
   </a>
 
-<br/><br/><br/>
+<br/><br/>
 <p align="center">
   <a href="https://dorahacks.io/hackathon/441/detail">Hackathon Women Web3 by Cripto Conexión</a>
 </p>
@@ -44,13 +44,29 @@ Education in disruptive technologies, such as blockchain and Web3, faces signifi
 - **Refundable enrollment model:**  
   Students pay an initial fee that is staked and refunded upon completing the course on time, creating a “pay only if you drop out” experience. Additionally, they can earn extra rewards for achieving milestones, turning learning into a gainful opportunity.
 
+<div align="center">
+  <a href="https://github.com/liz-durang/LearningPass">
+    <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/images/img1passport.png">
+  </a>
+</div>div>
 
 - **On-chain Passport:**  
   Each completed course and evaluation is recorded through NFTs in an “On-chain Passport,” facilitating the validation of skills and competencies for potential employers.
 
+<div align="center">
+  <a href="https://github.com/liz-durang/LearningPass">
+    <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/images/img2passport.png">
+  </a>
+</div>div>
+
 - **Platform as a service for educators:**  
   LearningPass provides an infrastructure for educators to publish and evaluate content on disruptive technologies, fostering diversity and quality in education.
 
+<div align="center">
+  <a href="https://github.com/liz-durang/LearningPass">
+    <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/images/img3passport.png">
+  </a>
+</div>div>
 
 <!-- Quickstart-->
 
@@ -98,7 +114,16 @@ Supported by:
 * [Arbitrum](https://arbitrum.io/)
 * [Scaffold-ETH 2](https://scaffoldeth.io/)
 
+# Our experience building with Vottun
 <!-- CONTACT -->
+
+Before using Vottun, I was unaware of a solution proposal for consuming Web3 technology through APIs. The implementation is quite straightforward to understand, especially if you are already familiar with using APIs.
+
+It would have been interesting if the documentation included the Postman environment showcased in one of the workshops. It would also be helpful to be able to perform attestations through the API. I noticed that each call or write operation consumed a considerable amount of credits, so we decided to develop the logic in a local environment before deploying it to Vottun.
+
+It would be beneficial to add instructions in the documentation on where to place each API and each App ID, especially for those using APIs for the first time. I am curious about how Vottun's backend operates; I wonder what would happen if Vottun experienced downtime, as that would affect the availability of my application, unlike building directly on the blockchain.
+
+Vottun presents an interesting proposal, especially considering its experience of over five years providing solutions to large companies. It serves as a good option for onboarding and facilitating the adoption of Web2 companies into the Web3 space.
 
 # Team
 
