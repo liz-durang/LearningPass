@@ -7,7 +7,7 @@
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/LearningPass.jpg">
   </a>
 
-<br/><br/>
+<br/>
 <p align="center">
   <a href="https://dorahacks.io/hackathon/441/detail">Hackathon Women Web3 by Cripto Conexión</a>
 </p>
@@ -48,7 +48,7 @@ Education in disruptive technologies, such as blockchain and Web3, faces signifi
   <a href="https://github.com/liz-durang/LearningPass">
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/images/img1passport.png">
   </a>
-</div>div>
+</div>
 
 - **On-chain Passport:**  
   Each completed course and evaluation is recorded through NFTs in an “On-chain Passport,” facilitating the validation of skills and competencies for potential employers.
@@ -57,7 +57,7 @@ Education in disruptive technologies, such as blockchain and Web3, faces signifi
   <a href="https://github.com/liz-durang/LearningPass">
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/images/img2passport.png">
   </a>
-</div>div>
+</div>
 
 - **Platform as a service for educators:**  
   LearningPass provides an infrastructure for educators to publish and evaluate content on disruptive technologies, fostering diversity and quality in education.
@@ -66,7 +66,7 @@ Education in disruptive technologies, such as blockchain and Web3, faces signifi
   <a href="https://github.com/liz-durang/LearningPass">
     <img src="https://github.com/liz-durang/LearningPass/blob/main/packages/nextjs/public/images/img3passport.png">
   </a>
-</div>div>
+</div>
 
 <!-- Quickstart-->
 
